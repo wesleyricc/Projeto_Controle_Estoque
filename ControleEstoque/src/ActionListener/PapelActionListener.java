@@ -26,12 +26,7 @@ public class PapelActionListener implements ActionListener {
         if(e.getActionCommand().equals("Salvar")){
             
             Papel papel = Fpapel.getPapel();
-            System.out.println("" + papel.getTextoTipopapel());
-            System.out.println("" + papel.getTextoCodpapel());
-            System.out.println("" + papel.getTextoFabricantepapel());
-            System.out.println("" + papel.getTextoFormatopapel());
-            System.out.println("" + papel.getTextoGramaturapapel());
-            System.out.println("" + papel.getTextoEstoquepapel());
+            System.out.println(papel.toString());
             
             Fpapel.LimparPapel();
          

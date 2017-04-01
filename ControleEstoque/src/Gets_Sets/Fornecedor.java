@@ -56,6 +56,12 @@ public class Fornecedor {
     public void setTextoEmailFornecedor(String textoEmailFornecedorFornecedor) {
         this.textoEmailFornecedor = textoEmailFornecedorFornecedor;
     }
+
+    @Override
+    public String toString() {
+        return "Fornecedor{\n\n" + "textoRazaoFornecedor=" + textoRazaoFornecedor + ",\n textoNomeFornecedor=" + textoNomeFornecedor + ",\n textoEnderecoFornecedor=" + textoEnderecoFornecedor + ",\n textoCPFCNPJFornecedor=" + textoCPFCNPJFornecedor + ",\n textoTelefoneFornecedor=" + textoTelefoneFornecedor + ",\n textoEmailFornecedor=" + textoEmailFornecedor + '}';
+    }
+    
 }
 
     

@@ -50,8 +50,8 @@
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="textoEmailFornecedor" min="-2" pref="347" max="-2" attributes="0"/>
-                          <Component id="textoTelefoneFornecedor" min="-2" pref="347" max="-2" attributes="0"/>
                           <Component id="textoEnderecoFornecedor" alignment="0" min="-2" pref="347" max="-2" attributes="0"/>
+                          <Component id="textoTelefoneFornecedor" alignment="0" min="-2" pref="113" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -101,7 +101,7 @@
                   <Component id="textoEmailFornecedor" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cadEmailFornecedor" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="40" max="32767" attributes="0"/>
+              <EmptySpace pref="44" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="botaoSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="botaoExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -153,11 +153,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textoEnderecoFornecedorActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="textoTelefoneFornecedor">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textoTelefoneFornecedorActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="botaoSalvar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Salvar"/>
@@ -195,6 +190,16 @@
           <Format format="##.###.###/####-##" subtype="-1" type="5"/>
         </Property>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="textoTelefoneFornecedor">
+      <Properties>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+          <Format format="(##)#####-####" subtype="-1" type="5"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textoTelefoneFornecedorActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

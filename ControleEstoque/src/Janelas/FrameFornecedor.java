@@ -31,13 +31,13 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
         textoRazaoFornecedor = new javax.swing.JTextField();
         textoNomeFornecedor = new javax.swing.JTextField();
         textoEnderecoFornecedor = new javax.swing.JTextField();
-        textoTelefoneFornecedor = new javax.swing.JTextField();
         botaoSalvar = new javax.swing.JButton();
         botaoExcluir = new javax.swing.JButton();
         botaoCancelar = new javax.swing.JButton();
         textoEmailFornecedor = new javax.swing.JTextField();
         cadEmailFornecedor = new javax.swing.JLabel();
         textoCNPJFornecedor = new javax.swing.JFormattedTextField();
+        textoTelefoneFornecedor = new javax.swing.JFormattedTextField();
 
         cadRazaoFornecedor.setText("Razão Social");
 
@@ -64,12 +64,6 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
         textoEnderecoFornecedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textoEnderecoFornecedorActionPerformed(evt);
-            }
-        });
-
-        textoTelefoneFornecedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textoTelefoneFornecedorActionPerformed(evt);
             }
         });
 
@@ -103,6 +97,17 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
 
+        try {
+            textoTelefoneFornecedor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        textoTelefoneFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoTelefoneFornecedorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -132,8 +137,8 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(textoEmailFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textoTelefoneFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textoEnderecoFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(textoEnderecoFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textoTelefoneFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(44, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -171,7 +176,7 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textoEmailFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cadEmailFornecedor))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoSalvar)
                     .addComponent(botaoExcluir)
@@ -200,10 +205,6 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textoEnderecoFornecedorActionPerformed
 
-    private void textoTelefoneFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoTelefoneFornecedorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textoTelefoneFornecedorActionPerformed
-
     private void textoEmailFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoEmailFornecedorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textoEmailFornecedorActionPerformed
@@ -215,6 +216,10 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
     private void botaoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botaoExcluirActionPerformed
+
+    private void textoTelefoneFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoTelefoneFornecedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textoTelefoneFornecedorActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -232,7 +237,7 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
     private javax.swing.JTextField textoEnderecoFornecedor;
     private javax.swing.JTextField textoNomeFornecedor;
     private javax.swing.JTextField textoRazaoFornecedor;
-    private javax.swing.JTextField textoTelefoneFornecedor;
+    private javax.swing.JFormattedTextField textoTelefoneFornecedor;
     // End of variables declaration//GEN-END:variables
 
     void setLocationRelativeTo(Object object) {
@@ -241,12 +246,13 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
 
     public Fornecedor getFornecedor() {
 
+        String Tel= textoTelefoneFornecedor.getText().replaceAll("[()-]", "");
         forn.setTextoCPFCNPJFornecedor(textoCNPJFornecedor.getText());
         forn.setTextoEmailFornecedor(textoEmailFornecedor.getText());
         forn.setTextoEnderecoFornecedor(textoEnderecoFornecedor.getText());
         forn.setTextoNomeFornecedor(textoNomeFornecedor.getText());
         forn.setTextoRazaoFornecedor(textoRazaoFornecedor.getText());
-        forn.setTextoTelefoneFornecedor(textoTelefoneFornecedor.getText());
+        forn.setTextoTelefoneFornecedor(Tel);
         return forn;
     }
 

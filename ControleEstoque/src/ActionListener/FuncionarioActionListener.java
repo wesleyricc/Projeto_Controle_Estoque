@@ -22,13 +22,7 @@ public class FuncionarioActionListener implements ActionListener {
         if (e.getActionCommand().equals("Salvar")) {
 
             Funcionario f = Ffuncionario.getFuncionario();
-            System.out.println("" + f.getTextoNomeFunc());
-            System.out.println("" + f.getTextoFuncaoFunc());
-            System.out.println("" + f.getTextoEnderecoFunc());
-            System.out.println("" + f.getTextoCPFFunc());
-            System.out.println("" + f.getTextoEmailFunc());
-            System.out.println("" + f.getTextoSexoFunc());
-            System.out.println("" + f.getTextoTelefoneFunc());
+            System.out.println(f.toString());
             
             Ffuncionario.LimparFuncionario();
 

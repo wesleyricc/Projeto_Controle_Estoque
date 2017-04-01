@@ -68,6 +68,11 @@ public class Funcionario {
         this.textoTelefoneFunc = textoTelefoneFunc;
     }
 
+    @Override
+    public String toString() {
+        return "Funcionario\n\n{" + "textoCPFFunc=" + textoCPFFunc + ",\n textoEmailFunc=" + textoEmailFunc + ",\n textoEnderecoFunc=" + textoEnderecoFunc + ",\n textoFuncaoFunc=" + textoFuncaoFunc + ",\n textoNomeFunc=" + textoNomeFunc + ",\n textoSexoFunc=" + textoSexoFunc + ",\n textoTelefoneFunc=" + textoTelefoneFunc + '}';
+    }
+
    
     
     

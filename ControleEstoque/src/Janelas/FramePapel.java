@@ -17,14 +17,13 @@ public class FramePapel extends javax.swing.JInternalFrame {
         botaoSalvar.addActionListener(papel);
         botaoCancelar.addActionListener(papel);
         botaoExcluir.addActionListener(papel);
-
+        
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        textoFabricantePapel = new javax.swing.JTextField();
         textoEstoquePapel = new javax.swing.JTextField();
         botaoSalvar = new javax.swing.JButton();
         botaoExcluir = new javax.swing.JButton();
@@ -41,12 +40,7 @@ public class FramePapel extends javax.swing.JInternalFrame {
         cadFormatoPapel = new javax.swing.JLabel();
         textoFormatoPapel = new javax.swing.JComboBox<>();
         textoTipoPapel = new javax.swing.JComboBox<>();
-
-        textoFabricantePapel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textoFabricantePapelActionPerformed(evt);
-            }
-        });
+        textoFabricantePapel = new javax.swing.JComboBox<>();
 
         textoEstoquePapel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,6 +101,8 @@ public class FramePapel extends javax.swing.JInternalFrame {
             }
         });
 
+        textoFabricantePapel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -116,10 +112,6 @@ public class FramePapel extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(cadFabricantePapel)
-                                .addGap(29, 29, 29)
-                                .addComponent(textoFabricantePapel, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(cadEstoquePapel)
@@ -131,15 +123,20 @@ public class FramePapel extends javax.swing.JInternalFrame {
                                     .addComponent(textoCodPapel, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(textoTipoPapel, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(cadVendaPapel)
-                                        .addGap(29, 29, 29))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGap(21, 21, 21)
-                                        .addComponent(cadGramaturaPapel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(cadVendaPapel)
+                                            .addGap(29, 29, 29))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addGap(21, 21, 21)
+                                            .addComponent(cadGramaturaPapel)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(cadFabricantePapel)
+                                        .addGap(29, 29, 29)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(textoFabricantePapel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(textoVendaPapel, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(textoGramaturaPapel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -178,7 +175,7 @@ public class FramePapel extends javax.swing.JInternalFrame {
                     .addComponent(textoGramaturaPapel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cadFormatoPapel)
                     .addComponent(textoFormatoPapel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cadVendaPapel, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(textoVendaPapel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -196,10 +193,6 @@ public class FramePapel extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void textoFabricantePapelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoFabricantePapelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textoFabricantePapelActionPerformed
 
     private void textoEstoquePapelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoEstoquePapelActionPerformed
         // TODO add your handling code here:
@@ -239,7 +232,7 @@ public class FramePapel extends javax.swing.JInternalFrame {
     private javax.swing.JLabel cadVendaPapel;
     private javax.swing.JTextField textoCodPapel;
     private javax.swing.JTextField textoEstoquePapel;
-    private javax.swing.JTextField textoFabricantePapel;
+    private javax.swing.JComboBox<String> textoFabricantePapel;
     private javax.swing.JComboBox<String> textoFormatoPapel;
     private javax.swing.JComboBox<String> textoGramaturaPapel;
     private javax.swing.JComboBox<String> textoTipoPapel;
@@ -249,7 +242,7 @@ public class FramePapel extends javax.swing.JInternalFrame {
     public Papel getPapel() {
         pap.setTextoCodpapel(textoCodPapel.getText());
         pap.setTextoEstoquepapel(textoEstoquePapel.getText());
-        pap.setTextoFabricantepapel(textoFabricantePapel.getText());
+        pap.setTextoFabricantepapel((String) textoFabricantePapel.getSelectedItem());
         pap.setTextoTipopapel((String) textoTipoPapel.getSelectedItem());
         pap.setTextoFormatopapel((String) textoFormatoPapel.getSelectedItem());
         pap.setTextoGramaturapapel((String) textoGramaturaPapel.getSelectedItem());
@@ -260,7 +253,9 @@ public class FramePapel extends javax.swing.JInternalFrame {
     public void LimparPapel() {
         textoCodPapel.setText("");
         textoEstoquePapel.setText("");
-        textoFabricantePapel.setText("");
+        textoTipoPapel.setSelectedIndex(0);
+        textoFabricantePapel.setSelectedIndex(0);
+        textoFormatoPapel.setSelectedIndex(0);
         textoVendaPapel.setText("");
     }
 

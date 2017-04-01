@@ -56,4 +56,11 @@ public class Papel {
     public void setTextoEstoquepapel(String textoEstoqueCodpapel) {
         this.textoEstoquepapel = textoEstoqueCodpapel;
     }
+
+    @Override
+    public String toString() {
+        return "Papel\n\n{" + "textoTipopapel=" + textoTipopapel + ",\n textoCodpapel=" + textoCodpapel + ",\n textoFabricantepapel=" + textoFabricantepapel + ",\n textoGramaturapapel=" + textoGramaturapapel + ",\n textoFormatopapel=" + textoFormatopapel + ",\n textoEstoquepapel=" + textoEstoquepapel + '}';
+    }
+    
+    
 }
