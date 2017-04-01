@@ -8,6 +8,15 @@ public class Papel {
     private String textoGramaturapapel;
     private String textoFormatopapel;
     private String textoEstoquepapel;
+    private String textoVendaPapel;
+
+    public String getTextoVendaPapel() {
+        return textoVendaPapel;
+    }
+
+    public void setTextoVendaPapel(String textoVendaPapel) {
+        this.textoVendaPapel = textoVendaPapel;
+    }
 
     public String getTextoTipopapel() {
         return textoTipopapel;
@@ -59,7 +68,7 @@ public class Papel {
 
     @Override
     public String toString() {
-        return "Papel\n\n{" + "textoTipopapel=" + textoTipopapel + ",\n textoCodpapel=" + textoCodpapel + ",\n textoFabricantepapel=" + textoFabricantepapel + ",\n textoGramaturapapel=" + textoGramaturapapel + ",\n textoFormatopapel=" + textoFormatopapel + ",\n textoEstoquepapel=" + textoEstoquepapel + '}';
+        return "Papel\n\n{" + "textoTipopapel=" + textoTipopapel + "textoVendaPapel=" + textoVendaPapel + ",\n textoCodpapel=" + textoCodpapel + ",\n textoFabricantepapel=" + textoFabricantepapel + ",\n textoGramaturapapel=" + textoGramaturapapel + ",\n textoFormatopapel=" + textoFormatopapel + ",\n textoEstoquepapel=" + textoEstoquepapel + '}';
     }
     
     
