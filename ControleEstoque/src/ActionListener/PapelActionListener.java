@@ -27,10 +27,7 @@ public class PapelActionListener implements ActionListener {
             
             Papel papel = Fpapel.getPapel();
             System.out.println(papel.toString());
-            
-            Fpapel.LimparPapel();
-         
-            
+
         }
         
         

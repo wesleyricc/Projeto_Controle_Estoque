@@ -22,9 +22,7 @@ public class FuncionarioActionListener implements ActionListener {
         if (e.getActionCommand().equals("Salvar")) {
 
             Funcionario f = Ffuncionario.getFuncionario();
-            System.out.println(f.toString());
-            
-            Ffuncionario.LimparFuncionario();
+            System.out.println(f.toString());          
 
         }
         

@@ -23,8 +23,6 @@ public class FornecedorActionListener implements ActionListener {
             Fornecedor f = FFornecedor.getFornecedor();  
             System.out.println(f.toString());
                                     
-            FFornecedor.LimparFornecedor();
-
         }
         
         if(e.getActionCommand().equals("Excluir")){
