@@ -38,8 +38,6 @@ public class FramePrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         painelPrincipal = new javax.swing.JDesktopPane();
-        LabelIcone = new javax.swing.JLabel();
-        LogoPrincipal = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         menuArquivo = new javax.swing.JMenu();
@@ -52,13 +50,11 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        painelPrincipal.setBackground(new java.awt.Color(204, 204, 204));
-        painelPrincipal.setForeground(new java.awt.Color(204, 204, 204));
+        painelPrincipal.setBackground(new java.awt.Color(204, 255, 255));
+        painelPrincipal.setOpaque(false);
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Analytics-icon (1).png"))); // NOI18N
 
-        painelPrincipal.setLayer(LabelIcone, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelPrincipal.setLayer(LogoPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelPrincipal.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout painelPrincipalLayout = new javax.swing.GroupLayout(painelPrincipal);
@@ -66,29 +62,16 @@ public class FramePrincipal extends javax.swing.JFrame {
         painelPrincipalLayout.setHorizontalGroup(
             painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelPrincipalLayout.createSequentialGroup()
-                .addGap(319, 319, 319)
-                .addComponent(LabelIcone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(312, 312, 312))
-            .addGroup(painelPrincipalLayout.createSequentialGroup()
-                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelPrincipalLayout.createSequentialGroup()
-                        .addGap(254, 254, 254)
-                        .addComponent(LogoPrincipal))
-                    .addGroup(painelPrincipalLayout.createSequentialGroup()
-                        .addGap(263, 263, 263)
-                        .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(158, 158, 158)
+                .addComponent(jLabel1)
+                .addContainerGap(244, Short.MAX_VALUE))
         );
         painelPrincipalLayout.setVerticalGroup(
             painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelPrincipalLayout.createSequentialGroup()
-                .addGap(153, 153, 153)
+                .addGap(92, 92, 92)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(LogoPrincipal)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(LabelIcone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(228, 228, 228))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
 
         menuArquivo.setText("Arquivo");
@@ -205,8 +188,6 @@ public class FramePrincipal extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel LabelIcone;
-    private javax.swing.JLabel LogoPrincipal;
     private javax.swing.JMenuBar barraMenu;
     private javax.swing.JMenuItem cadFornecedor;
     private javax.swing.JMenuItem cadFuncionario;
