@@ -53,7 +53,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         painelPrincipal.setBackground(new java.awt.Color(204, 255, 255));
         painelPrincipal.setOpaque(false);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Analytics-icon (1).png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Stock-icon (1).png"))); // NOI18N
 
         painelPrincipal.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -62,16 +62,16 @@ public class FramePrincipal extends javax.swing.JFrame {
         painelPrincipalLayout.setHorizontalGroup(
             painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelPrincipalLayout.createSequentialGroup()
-                .addGap(158, 158, 158)
+                .addGap(332, 332, 332)
                 .addComponent(jLabel1)
-                .addContainerGap(244, Short.MAX_VALUE))
+                .addContainerGap(372, Short.MAX_VALUE))
         );
         painelPrincipalLayout.setVerticalGroup(
             painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelPrincipalLayout.createSequentialGroup()
-                .addGap(92, 92, 92)
+                .addGap(221, 221, 221)
                 .addComponent(jLabel1)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(263, Short.MAX_VALUE))
         );
 
         menuArquivo.setText("Arquivo");
