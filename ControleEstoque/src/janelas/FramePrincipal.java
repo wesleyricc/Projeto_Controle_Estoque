@@ -38,7 +38,6 @@ public class FramePrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         painelPrincipal = new javax.swing.JDesktopPane();
-        jLabel1 = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         menuArquivo = new javax.swing.JMenu();
         menuCadastro = new javax.swing.JMenu();
@@ -53,25 +52,15 @@ public class FramePrincipal extends javax.swing.JFrame {
         painelPrincipal.setBackground(new java.awt.Color(204, 255, 255));
         painelPrincipal.setOpaque(false);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Stock-icon (1).png"))); // NOI18N
-
-        painelPrincipal.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
         javax.swing.GroupLayout painelPrincipalLayout = new javax.swing.GroupLayout(painelPrincipal);
         painelPrincipal.setLayout(painelPrincipalLayout);
         painelPrincipalLayout.setHorizontalGroup(
             painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelPrincipalLayout.createSequentialGroup()
-                .addGap(332, 332, 332)
-                .addComponent(jLabel1)
-                .addContainerGap(372, Short.MAX_VALUE))
+            .addGap(0, 704, Short.MAX_VALUE)
         );
         painelPrincipalLayout.setVerticalGroup(
             painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelPrincipalLayout.createSequentialGroup()
-                .addGap(221, 221, 221)
-                .addComponent(jLabel1)
-                .addContainerGap(263, Short.MAX_VALUE))
+            .addGap(0, 484, Short.MAX_VALUE)
         );
 
         menuArquivo.setText("Arquivo");
@@ -192,7 +181,6 @@ public class FramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem cadFornecedor;
     private javax.swing.JMenuItem cadFuncionario;
     private javax.swing.JMenuItem cadPapel;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu menuAjuda;
     private javax.swing.JMenu menuArquivo;
     private javax.swing.JMenu menuCadastro;
