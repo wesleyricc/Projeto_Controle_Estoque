@@ -57,9 +57,9 @@
                   <Component id="textoFuncaoFunc" min="-2" pref="347" max="-2" attributes="0"/>
                   <Component id="textoNomeFunc" min="-2" pref="347" max="-2" attributes="0"/>
                   <Component id="textoEmailFunc" alignment="0" min="-2" pref="347" max="-2" attributes="0"/>
-                  <Component id="textoTelefoneFunc" alignment="0" min="-2" pref="113" max="-2" attributes="0"/>
                   <Component id="textoCPFFunc" alignment="0" min="-2" pref="113" max="-2" attributes="0"/>
-                  <Component id="textoSexoFunc" min="-2" max="-2" attributes="0"/>
+                  <Component id="textoTelefoneFunc" alignment="0" min="-2" pref="113" max="-2" attributes="0"/>
+                  <Component id="textoSexoFunc" alignment="0" min="-2" pref="89" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="61" max="32767" attributes="0"/>
           </Group>
@@ -109,7 +109,7 @@
                   <Component id="botaoExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="botaoCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="25" max="32767" attributes="0"/>
+              <EmptySpace pref="29" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
