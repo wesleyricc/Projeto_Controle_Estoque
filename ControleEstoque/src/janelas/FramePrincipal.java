@@ -2,6 +2,9 @@ package janelas;
 
 import actionListener.Log;
 import gets_sets.Login;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /*
@@ -9,7 +12,6 @@ import gets_sets.Login;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author comp8
@@ -24,15 +26,14 @@ public class FramePrincipal extends javax.swing.JFrame {
     private String msg;
     Log logs = new Log();
     Login l;
-    
+
     /**
      * Creates new form Principal
      */
     public FramePrincipal() {
         initComponents();
         this.setLocationRelativeTo(null); // Centralizar
-        
-        
+
     }
 
     /**
@@ -143,25 +144,34 @@ public class FramePrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-      public void setUser(String user) {
-        this.user = user;
-    }
     
     private void cadPapelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadPapelActionPerformed
         painelPrincipal.remove(Papel);
         painelPrincipal.add(Papel);
         Papel.setVisible(true);
         Papel.setPosicao();
+        
+        try {
+            logs.escreverLog("Acessou cadastro de Papel!");
+        } catch (IOException ex) {
+
+        }
+        
     }//GEN-LAST:event_cadPapelActionPerformed
 
-    
-    
     private void cadFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadFornecedorActionPerformed
         painelPrincipal.remove(Fornecedor);
         painelPrincipal.add(Fornecedor);
         Fornecedor.setVisible(true);
         Fornecedor.setPosicao();
-        
+
+        try {
+            logs.escreverLog("Acessou cadastro de Fornecedores!");
+        } catch (IOException ex) {
+
+        }
+
+
     }//GEN-LAST:event_cadFornecedorActionPerformed
 
     private void cadFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadFuncionarioActionPerformed
@@ -169,7 +179,14 @@ public class FramePrincipal extends javax.swing.JFrame {
         painelPrincipal.add(Funcionario);
         Funcionario.setVisible(true);
         Funcionario.setPosicao();
-        
+       
+
+        try {
+            logs.escreverLog("Acessou cadastro de Funcionários!");
+        } catch (IOException ex) {
+
+        }
+
     }//GEN-LAST:event_cadFuncionarioActionPerformed
 
     private void menuAjudaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuAjudaMouseClicked
@@ -177,17 +194,33 @@ public class FramePrincipal extends javax.swing.JFrame {
         painelPrincipal.add(Ajuda);
         Ajuda.setVisible(true);
         Ajuda.setPosicao();
+       
+
+        try {
+            logs.escreverLog("Acessou Ajuda!");
+        } catch (IOException ex) {
+
+        }
+        
     }//GEN-LAST:event_menuAjudaMouseClicked
 
     private void menuArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuArquivoActionPerformed
-        
+
     }//GEN-LAST:event_menuArquivoActionPerformed
 
     private void menuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSairActionPerformed
+       
+
+        try {
+            logs.escreverLog("Saiu do Sistema!");
+        } catch (IOException ex) {
+
+        }
+        
         System.exit(0);
+       
     }//GEN-LAST:event_menuSairActionPerformed
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraMenu;

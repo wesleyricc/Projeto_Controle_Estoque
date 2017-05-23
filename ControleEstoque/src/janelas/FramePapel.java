@@ -1,14 +1,22 @@
 package janelas;
 
+import Exception.Exceptions;
+import actionListener.Log;
 import actionListener.PapelActionListener;
+import gets_sets.Login;
 import gets_sets.Papel;
 import java.awt.Dimension;
+import java.io.IOException;
 
 public class FramePapel extends javax.swing.JInternalFrame {
 
     private PapelActionListener papel = new PapelActionListener(this);
-
     private Papel pap = new Papel();
+    private String user;
+    private String msg;
+    Log logs = new Log();
+    Login l;
+    
 
     public FramePapel() {
         super("Cadastro de Papéis");
@@ -16,17 +24,19 @@ public class FramePapel extends javax.swing.JInternalFrame {
 
         botaoSalvar.addActionListener(papel);
         botaoCancelar.addActionListener(papel);
-        botaoExcluir.addActionListener(papel);
+        botaoLimpar.addActionListener(papel);
         
     }
 
+
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         textoEstoquePapel = new javax.swing.JTextField();
         botaoSalvar = new javax.swing.JButton();
-        botaoExcluir = new javax.swing.JButton();
+        botaoLimpar = new javax.swing.JButton();
         botaoCancelar = new javax.swing.JButton();
         cadTipoPapel = new javax.swing.JLabel();
         cadCodPapel = new javax.swing.JLabel();
@@ -42,15 +52,21 @@ public class FramePapel extends javax.swing.JInternalFrame {
         textoFabricantePapel = new javax.swing.JComboBox<>();
         textoVendaPapel = new javax.swing.JFormattedTextField();
 
+        textoEstoquePapel.setToolTipText("Exemplo: 20");
         textoEstoquePapel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textoEstoquePapelActionPerformed(evt);
             }
         });
+        textoEstoquePapel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textoEstoquePapelKeyTyped(evt);
+            }
+        });
 
         botaoSalvar.setText("Salvar");
 
-        botaoExcluir.setText("Excluir");
+        botaoLimpar.setText("Limpar");
 
         botaoCancelar.setText("Cancelar");
 
@@ -64,9 +80,15 @@ public class FramePapel extends javax.swing.JInternalFrame {
 
         cadEstoquePapel.setText("Máximo em estoque");
 
+        textoCodPapel.setToolTipText("Exemplo: 2938753");
         textoCodPapel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textoCodPapelActionPerformed(evt);
+            }
+        });
+        textoCodPapel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textoCodPapelKeyTyped(evt);
             }
         });
 
@@ -98,6 +120,12 @@ public class FramePapel extends javax.swing.JInternalFrame {
         textoFabricantePapel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Suzano", "GRPaper", "Klabin", "Ibema", "Santa Maria" }));
 
         textoVendaPapel.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
+        textoVendaPapel.setToolTipText("Exemplo: 200");
+        textoVendaPapel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textoVendaPapelKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -141,12 +169,12 @@ public class FramePapel extends javax.swing.JInternalFrame {
                                     .addComponent(textoCodPapel, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(textoTipoPapel, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(textoVendaPapel, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(11, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(botaoSalvar)
                         .addGap(40, 40, 40)
-                        .addComponent(botaoExcluir)
+                        .addComponent(botaoLimpar)
                         .addGap(39, 39, 39)
                         .addComponent(botaoCancelar)
                         .addGap(120, 120, 120))))
@@ -183,14 +211,14 @@ public class FramePapel extends javax.swing.JInternalFrame {
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoSalvar)
-                    .addComponent(botaoExcluir)
+                    .addComponent(botaoLimpar)
                     .addComponent(botaoCancelar))
                 .addGap(29, 29, 29))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void textoEstoquePapelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoEstoquePapelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textoEstoquePapelActionPerformed
@@ -211,10 +239,58 @@ public class FramePapel extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textoTipoPapelActionPerformed
 
+    private void textoCodPapelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoCodPapelKeyTyped
+
+        String caracteres="0987654321";
+        if(!caracteres.contains(evt.getKeyChar()+"")){
+        evt.consume();
+    }
+        int limit = 20;
+         
+        if (textoCodPapel.getText().length() == limit) {
+            
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_textoCodPapelKeyTyped
+
+    private void textoVendaPapelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoVendaPapelKeyTyped
+
+        String caracteres="0987654321";
+        if(!caracteres.contains(evt.getKeyChar()+"")){
+        evt.consume();
+    }
+
+        int limit = 10;
+         
+        if (textoVendaPapel.getText().length() == limit) {
+            
+            evt.consume();
+        }
+            
+    }//GEN-LAST:event_textoVendaPapelKeyTyped
+
+    private void textoEstoquePapelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoEstoquePapelKeyTyped
+        
+        String caracteres="0987654321";
+        if(!caracteres.contains(evt.getKeyChar()+"")){
+        evt.consume();
+    }
+
+        int limit = 8;
+         
+        if (textoEstoquePapel.getText().length() == limit) {
+            
+            evt.consume();
+        }
+            
+            
+    }//GEN-LAST:event_textoEstoquePapelKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoCancelar;
-    private javax.swing.JButton botaoExcluir;
+    private javax.swing.JButton botaoLimpar;
     private javax.swing.JButton botaoSalvar;
     private javax.swing.JLabel cadCodPapel;
     private javax.swing.JLabel cadEstoquePapel;
@@ -232,7 +308,16 @@ public class FramePapel extends javax.swing.JInternalFrame {
     private javax.swing.JFormattedTextField textoVendaPapel;
     // End of variables declaration//GEN-END:variables
 
-    public Papel getPapel() {
+    public Papel getPapel() throws Exceptions {
+        
+
+        if (textoCodPapel.getText().trim().isEmpty() || textoEstoquePapel.getText().trim().isEmpty()|| textoVendaPapel.getText().trim().isEmpty()){
+            
+            try {   
+                    logs.escreverLog("Erro ao cadastrar Papel!"); 
+                } catch (IOException ex) {}
+            throw new Exceptions ("Preencha todos os campos corretamente!");
+        }
         
         String valor = textoVendaPapel.getText().replaceAll("[.-]", "");
         pap.setTextoCodpapel(textoCodPapel.getText());

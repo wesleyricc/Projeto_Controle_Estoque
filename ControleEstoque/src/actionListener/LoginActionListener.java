@@ -29,26 +29,20 @@ public class LoginActionListener implements ActionListener {
 
         if (e.getActionCommand().equals("Entrar")) {
             Login l = flogin.getLogin();
+            
             if (l.getSenhaLogin().equals("admin") && !l.getUsuarioLogin().trim().isEmpty()) {
                 principal.setVisible(true);
                 flogin.dispose();
                 
-                principal.setUser(l.getUsuarioLogin());
-                
-                String msg = "Entrou no sistema!";
-
                 try {
-                    logs.escreverUsuario(l.getUsuarioLogin());
+                    logs.escreverLog("Acessou o sistema!");
+                    } catch (IOException ex) {}
+                
+                try {
+                    logs.escreverUsuario();
 
                 } catch (IOException ex) {
                     Logger.getLogger(LoginActionListener.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-                try {
-                    logs.escreverLog(l.getUsuarioLogin(), msg);
-
-                } catch (IOException ex) {
-
                 }
 
             } else {
@@ -59,6 +53,11 @@ public class LoginActionListener implements ActionListener {
         }
 
         if (e.getActionCommand().equals("Cancelar")) {
+            
+            try {
+                logs.escreverLog("Cancelou seu login!");
+                } catch (IOException ex) {}
+            
             System.exit(0);
         }
 

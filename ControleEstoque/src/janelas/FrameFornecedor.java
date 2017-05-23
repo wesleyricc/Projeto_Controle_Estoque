@@ -1,13 +1,22 @@
 package janelas;
 
+import Exception.Exceptions;
 import actionListener.FornecedorActionListener;
+import actionListener.Log;
 import gets_sets.Fornecedor;
+import gets_sets.Login;
 import java.awt.Dimension;
+import java.io.IOException;
+import javax.swing.JFormattedTextField;
 
 public class FrameFornecedor extends javax.swing.JInternalFrame {
 
     private FornecedorActionListener fornecedor = new FornecedorActionListener(this);
     private Fornecedor forn = new Fornecedor();
+    private String user;
+    private String msg;
+    Log logs = new Log();
+    Login l;
 
     public FrameFornecedor() {
         super("Cadastro de Fornecedor");
@@ -15,7 +24,7 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
 
         botaoSalvar.addActionListener(fornecedor);
         botaoCancelar.addActionListener(fornecedor);
-        botaoExcluir.addActionListener(fornecedor);
+        botaoLimpar.addActionListener(fornecedor);
 
     }
 
@@ -32,7 +41,7 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
         textoNomeFornecedor = new javax.swing.JTextField();
         textoEnderecoFornecedor = new javax.swing.JTextField();
         botaoSalvar = new javax.swing.JButton();
-        botaoExcluir = new javax.swing.JButton();
+        botaoLimpar = new javax.swing.JButton();
         botaoCancelar = new javax.swing.JButton();
         textoEmailFornecedor = new javax.swing.JTextField();
         cadEmailFornecedor = new javax.swing.JLabel();
@@ -49,21 +58,39 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
 
         cadTelefoneFornecedor.setText("Telefone");
 
+        textoRazaoFornecedor.setToolTipText("Exemplo: JPD Sistemas");
         textoRazaoFornecedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textoRazaoFornecedorActionPerformed(evt);
             }
         });
+        textoRazaoFornecedor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textoRazaoFornecedorKeyTyped(evt);
+            }
+        });
 
+        textoNomeFornecedor.setToolTipText("Exemplo: José Ricardo da Silva");
         textoNomeFornecedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textoNomeFornecedorActionPerformed(evt);
             }
         });
+        textoNomeFornecedor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textoNomeFornecedorKeyTyped(evt);
+            }
+        });
 
+        textoEnderecoFornecedor.setToolTipText("Exemplo: Rua São José");
         textoEnderecoFornecedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textoEnderecoFornecedorActionPerformed(evt);
+            }
+        });
+        textoEnderecoFornecedor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textoEnderecoFornecedorKeyTyped(evt);
             }
         });
 
@@ -74,18 +101,19 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
             }
         });
 
-        botaoExcluir.setText("Excluir");
-        botaoExcluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoExcluirActionPerformed(evt);
-            }
-        });
+        botaoLimpar.setText("Limpar");
 
         botaoCancelar.setText("Cancelar");
 
+        textoEmailFornecedor.setToolTipText("vitor.santos@hotmail.com");
         textoEmailFornecedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textoEmailFornecedorActionPerformed(evt);
+            }
+        });
+        textoEmailFornecedor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textoEmailFornecedorKeyTyped(evt);
             }
         });
 
@@ -144,7 +172,7 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(botaoSalvar)
                 .addGap(34, 34, 34)
-                .addComponent(botaoExcluir)
+                .addComponent(botaoLimpar)
                 .addGap(28, 28, 28)
                 .addComponent(botaoCancelar)
                 .addGap(118, 118, 118))
@@ -179,7 +207,7 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoSalvar)
-                    .addComponent(botaoExcluir)
+                    .addComponent(botaoLimpar)
                     .addComponent(botaoCancelar))
                 .addGap(22, 22, 22))
         );
@@ -188,6 +216,7 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
 
     private void textoRazaoFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoRazaoFornecedorActionPerformed
         // TODO add your handling code here:
@@ -209,22 +238,71 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textoEmailFornecedorActionPerformed
 
-    private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
-
-    }//GEN-LAST:event_botaoSalvarActionPerformed
-
-    private void botaoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botaoExcluirActionPerformed
-
     private void textoTelefoneFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoTelefoneFornecedorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textoTelefoneFornecedorActionPerformed
 
+    private void textoRazaoFornecedorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoRazaoFornecedorKeyTyped
+
+        String caracteres = "0987654321";
+        if (caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+        int limit = 50;
+
+        if (textoRazaoFornecedor.getText().length() == limit) {
+
+            evt.consume();
+        }
+
+    }//GEN-LAST:event_textoRazaoFornecedorKeyTyped
+
+    private void textoNomeFornecedorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoNomeFornecedorKeyTyped
+
+        String caracteres = "0987654321";
+        if (caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+        int limit = 50;
+
+        if (textoNomeFornecedor.getText().length() == limit) {
+
+            evt.consume();
+        }
+
+
+    }//GEN-LAST:event_textoNomeFornecedorKeyTyped
+
+    private void textoEnderecoFornecedorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoEnderecoFornecedorKeyTyped
+
+        int limit = 50;
+
+        if (textoEnderecoFornecedor.getText().length() == limit) {
+
+            evt.consume();
+        }
+
+    }//GEN-LAST:event_textoEnderecoFornecedorKeyTyped
+
+    private void textoEmailFornecedorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoEmailFornecedorKeyTyped
+
+        int limit = 50;
+
+        if (textoEmailFornecedor.getText().length() == limit) {
+
+            evt.consume();
+        }
+
+    }//GEN-LAST:event_textoEmailFornecedorKeyTyped
+
+    private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoSalvarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoCancelar;
-    private javax.swing.JButton botaoExcluir;
+    private javax.swing.JButton botaoLimpar;
     private javax.swing.JButton botaoSalvar;
     private javax.swing.JLabel cadCPFFornecedor;
     private javax.swing.JLabel cadEmailFornecedor;
@@ -244,25 +322,39 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public Fornecedor getFornecedor() {
+    public Fornecedor getFornecedor() throws Exceptions {
 
-        String Tel= textoTelefoneFornecedor.getText().replaceAll("[()-]", "");
+        String Tel = textoTelefoneFornecedor.getText().replaceAll("[()-]", "");
+
+        if (textoRazaoFornecedor.getText().trim().isEmpty() || textoEmailFornecedor.getText().trim().isEmpty() || textoEnderecoFornecedor.getText().trim().isEmpty()
+                || textoNomeFornecedor.getText().trim().isEmpty() || textoCNPJFornecedor.getText().trim().isEmpty() || textoTelefoneFornecedor.getText().trim().isEmpty()) {
+            
+            try {   
+                    logs.escreverLog("Erro ao cadastrar Fornecedor!"); 
+                } catch (IOException ex) {} 
+            
+            throw new Exceptions("Preencha todos os campos corretamente!");
+        }
+
         forn.setTextoCPFCNPJFornecedor(textoCNPJFornecedor.getText());
         forn.setTextoEmailFornecedor(textoEmailFornecedor.getText());
         forn.setTextoEnderecoFornecedor(textoEnderecoFornecedor.getText());
         forn.setTextoNomeFornecedor(textoNomeFornecedor.getText());
         forn.setTextoRazaoFornecedor(textoRazaoFornecedor.getText());
         forn.setTextoTelefoneFornecedor(Tel);
+
         return forn;
     }
 
     public void LimparFornecedor() {
         textoEmailFornecedor.setText("");
         textoCNPJFornecedor.setText("");
+        textoCNPJFornecedor.setFocusLostBehavior(JFormattedTextField.PERSIST);
         textoEnderecoFornecedor.setText("");
         textoNomeFornecedor.setText("");
         textoRazaoFornecedor.setText("");
         textoTelefoneFornecedor.setText("");
+        textoTelefoneFornecedor.setFocusLostBehavior(JFormattedTextField.PERSIST);
     }
 
     public void setPosicao() {

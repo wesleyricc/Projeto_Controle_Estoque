@@ -1,8 +1,13 @@
 package janelas;
 
+import Exception.Exceptions;
 import actionListener.FuncionarioActionListener;
+import actionListener.Log;
 import gets_sets.Funcionario;
+import gets_sets.Login;
 import java.awt.Dimension;
+import java.io.IOException;
+import javax.swing.JFormattedTextField;
 
 
 public class FrameFuncionario extends javax.swing.JInternalFrame {
@@ -10,8 +15,12 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
     
     private FuncionarioActionListener funcionario = new FuncionarioActionListener(this);
     private Funcionario f = new Funcionario();
-    
-    
+    private String user;
+    private String msg;
+    Log logs = new Log();
+    Login l;
+       
+   
     public FrameFuncionario(){
         super("Cadastro de Funcionários");
         initComponents();
@@ -19,12 +28,11 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
 
         botaoSalvar.addActionListener(funcionario);
         botaoCancelar.addActionListener(funcionario);
-        botaoExcluir.addActionListener(funcionario);
+        botaoLimpar.addActionListener(funcionario);
     
     }
 
    
-    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -32,7 +40,7 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
 
         textoEnderecoFunc = new javax.swing.JTextField();
         botaoSalvar = new javax.swing.JButton();
-        botaoExcluir = new javax.swing.JButton();
+        botaoLimpar = new javax.swing.JButton();
         botaoCancelar = new javax.swing.JButton();
         cadNomeFunc = new javax.swing.JLabel();
         cadFuncao = new javax.swing.JLabel();
@@ -48,15 +56,21 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
         textoCPFFunc = new javax.swing.JFormattedTextField();
         textoSexoFunc = new javax.swing.JComboBox<>();
 
+        textoEnderecoFunc.setToolTipText("Exemplo: Rua São José");
         textoEnderecoFunc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textoEnderecoFuncActionPerformed(evt);
             }
         });
+        textoEnderecoFunc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textoEnderecoFuncKeyTyped(evt);
+            }
+        });
 
         botaoSalvar.setText("Salvar");
 
-        botaoExcluir.setText("Excluir");
+        botaoLimpar.setText("Limpar");
 
         botaoCancelar.setText("Cancelar");
 
@@ -70,15 +84,27 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
 
         cadSexoFunc.setText("Sexo");
 
+        textoNomeFunc.setToolTipText("Exemplo: José Ricardo da Silva");
         textoNomeFunc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textoNomeFuncActionPerformed(evt);
             }
         });
+        textoNomeFunc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textoNomeFuncKeyTyped(evt);
+            }
+        });
 
+        textoFuncaoFunc.setToolTipText("Exemplo: Auxiliar técnico");
         textoFuncaoFunc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textoFuncaoFuncActionPerformed(evt);
+            }
+        });
+        textoFuncaoFunc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textoFuncaoFuncKeyTyped(evt);
             }
         });
 
@@ -86,9 +112,15 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
 
         cadEmailFunc.setText("E-mail");
 
+        textoEmailFunc.setToolTipText("Exemplo: vitor.santos@hotmail.com");
         textoEmailFunc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textoEmailFuncActionPerformed(evt);
+            }
+        });
+        textoEmailFunc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textoEmailFuncKeyTyped(evt);
             }
         });
 
@@ -117,6 +149,11 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        textoCPFFunc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoCPFFuncActionPerformed(evt);
+            }
+        });
 
         textoSexoFunc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino" }));
 
@@ -147,7 +184,7 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(botaoSalvar)
                         .addGap(35, 35, 35)
-                        .addComponent(botaoExcluir)
+                        .addComponent(botaoLimpar)
                         .addGap(30, 30, 30)
                         .addComponent(botaoCancelar))
                     .addComponent(textoEnderecoFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -170,11 +207,14 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cadFuncao)
                     .addComponent(textoFuncaoFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textoCPFFunc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cadCPFFunc))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cadCPFFunc)
+                        .addGap(22, 22, 22))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(textoCPFFunc, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cadEnderecoFunc)
                     .addComponent(textoEnderecoFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -193,14 +233,15 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoSalvar)
-                    .addComponent(botaoExcluir)
+                    .addComponent(botaoLimpar)
                     .addComponent(botaoCancelar))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+   
+      
     private void textoEnderecoFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoEnderecoFuncActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textoEnderecoFuncActionPerformed
@@ -225,11 +266,65 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textoTelefoneFuncAncestorAdded
 
-    
+    private void textoCPFFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoCPFFuncActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textoCPFFuncActionPerformed
+
+    private void textoNomeFuncKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoNomeFuncKeyTyped
+        
+        String caracteres="0987654321";
+        if(caracteres.contains(evt.getKeyChar()+"")){
+        evt.consume();          
+    }   
+        int limit = 50;
+         
+        if (textoNomeFunc.getText().length() == limit) {
+            
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_textoNomeFuncKeyTyped
+
+    private void textoFuncaoFuncKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoFuncaoFuncKeyTyped
+        
+        String caracteres="0987654321";
+        if(caracteres.contains(evt.getKeyChar()+"")){
+        evt.consume();
+    }
+        int limit = 50;
+         
+        if (textoFuncaoFunc.getText().length() == limit) {
+            
+            evt.consume();
+        }
+       
+    }//GEN-LAST:event_textoFuncaoFuncKeyTyped
+
+    private void textoEnderecoFuncKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoEnderecoFuncKeyTyped
+      
+         int limit = 50;
+         
+        if (textoEnderecoFunc.getText().length() == limit) {
+            
+            evt.consume();
+        }
+       
+    }//GEN-LAST:event_textoEnderecoFuncKeyTyped
+
+    private void textoEmailFuncKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoEmailFuncKeyTyped
+        
+        int limit = 50;
+         
+        if (textoEmailFunc.getText().length() == limit) {
+            
+            evt.consume();
+        }
+       
+    }//GEN-LAST:event_textoEmailFuncKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoCancelar;
-    private javax.swing.JButton botaoExcluir;
+    private javax.swing.JButton botaoLimpar;
     private javax.swing.JButton botaoSalvar;
     private javax.swing.JLabel cadCPFFunc;
     private javax.swing.JLabel cadEmailFunc;
@@ -251,8 +346,20 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public Funcionario getFuncionario() {
+    public Funcionario getFuncionario() throws Exceptions {
 
+        
+        if (textoEmailFunc.getText().trim().isEmpty() || textoCPFFunc.getText().trim().isEmpty() || textoEnderecoFunc.getText().trim().isEmpty() || 
+            textoFuncaoFunc.getText().trim().isEmpty() ||  textoNomeFunc.getText().trim().isEmpty() ||  textoTelefoneFunc.getText().trim().isEmpty()){
+        
+            try {   
+                    logs.escreverLog("Erro ao cadastrar Funcionário!"); 
+                } catch (IOException ex) {} 
+               
+           
+            throw new Exceptions("Preencha todos os campos corretamente!");  
+       }
+        
         String Tel= textoTelefoneFunc.getText().replaceAll("[()-]", "");
         String CPF = textoCPFFunc.getText().replaceAll("[.-]", "");
         
@@ -264,17 +371,20 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
         f.setTextoSexoFunc((String) textoSexoFunc.getSelectedItem());
         f.setTextoTelefoneFunc(Tel);
         
-        
+       
+            
         return f;
     }
 
     public void LimparFuncionario() {
         textoEmailFunc.setText("");
         textoCPFFunc.setText("");
+        textoCPFFunc.setFocusLostBehavior(JFormattedTextField.PERSIST);
         textoEnderecoFunc.setText("");
         textoFuncaoFunc.setText("");
         textoNomeFunc.setText("");
         textoTelefoneFunc.setText("");
+        textoTelefoneFunc.setFocusLostBehavior(JFormattedTextField.PERSIST);
     }
     
     public void setPosicao() {

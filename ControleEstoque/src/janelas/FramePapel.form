@@ -69,13 +69,13 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="11" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Component id="botaoSalvar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                      <Component id="botaoExcluir" min="-2" max="-2" attributes="0"/>
+                      <Component id="botaoLimpar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                       <Component id="botaoCancelar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
@@ -122,7 +122,7 @@
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="botaoSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="botaoExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="botaoLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="botaoCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
@@ -132,8 +132,12 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JTextField" name="textoEstoquePapel">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Exemplo: 20"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textoEstoquePapelActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textoEstoquePapelKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="botaoSalvar">
@@ -141,9 +145,9 @@
         <Property name="text" type="java.lang.String" value="Salvar"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="botaoExcluir">
+    <Component class="javax.swing.JButton" name="botaoLimpar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Excluir"/>
+        <Property name="text" type="java.lang.String" value="Limpar"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="botaoCancelar">
@@ -177,8 +181,12 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="textoCodPapel">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Exemplo: 2938753"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textoCodPapelActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textoCodPapelKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="cadGramaturaPapel">
@@ -267,7 +275,11 @@
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
           <Format format="#,##0.00" subtype="-1" type="4"/>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Exemplo: 200"/>
       </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textoVendaPapelKeyTyped"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

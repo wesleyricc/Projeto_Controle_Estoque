@@ -1,12 +1,16 @@
 package janelas;
 
-
+import actionListener.Log;
 import actionListener.LoginActionListener;
 import gets_sets.Login;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /**
@@ -15,29 +19,33 @@ import javax.swing.ImageIcon;
  */
 public class FrameLogin extends javax.swing.JFrame {
 
-    
     private LoginActionListener login = new LoginActionListener(this);
     private Login log = new Login();
     private String logUser = null;
+    private String user;
+    private String msg;
+    Log logs = new Log();
+    Login l;
+
+    
+    
     /**
      * Creates new form Login
      */
-    
-    
     public FrameLogin() {
         initComponents();
         this.setLocationRelativeTo(null); // Centralizar
-        
+
         ImageIcon icone = new ImageIcon("src/Icon/pesquisa.png");
         setIconImage(icone.getImage());
-        
+
         try {
             String user = lerUsuario();
             usuarioLogin.setText(user);
         } catch (IOException ex) {
 
         }
-        
+
         botaoEntrar.addActionListener(login);
         botaoCancelar.addActionListener(login);
     }
@@ -62,8 +70,6 @@ public class FrameLogin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Estoque");
 
-        usuarioLogin.setText("admin");
-
         labelUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labelUsuario.setText("Usuário");
 
@@ -71,25 +77,10 @@ public class FrameLogin extends javax.swing.JFrame {
         labelSenha.setText("Senha");
 
         botaoEntrar.setText("Entrar");
-        botaoEntrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoEntrarActionPerformed(evt);
-            }
-        });
 
         botaoCancelar.setText("Cancelar");
-        botaoCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoCancelarActionPerformed(evt);
-            }
-        });
 
         senhaLogin.setText("admin");
-        senhaLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                senhaLoginActionPerformed(evt);
-            }
-        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Stock-icon (1).png"))); // NOI18N
 
@@ -142,6 +133,7 @@ public class FrameLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private String lerUsuario() throws FileNotFoundException, IOException {
         FileReader fr = new FileReader("usuario.dat");
         BufferedReader br = new BufferedReader(fr);
@@ -154,19 +146,7 @@ public class FrameLogin extends javax.swing.JFrame {
 
         return logUser;
     }
-    
-    
-    private void botaoEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEntrarActionPerformed
-       
-    }//GEN-LAST:event_botaoEntrarActionPerformed
 
-    private void botaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelarActionPerformed
-        
-    }//GEN-LAST:event_botaoCancelarActionPerformed
-
-    private void senhaLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaLoginActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_senhaLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -214,14 +194,14 @@ public class FrameLogin extends javax.swing.JFrame {
     private javax.swing.JTextField usuarioLogin;
     // End of variables declaration//GEN-END:variables
 
-public Login getLogin() {
-    
-        
+    public Login getLogin() {
+
         log.setSenhaLogin(senhaLogin.getText());
         log.setUsuarioLogin(usuarioLogin.getText());
+        logs.setUser(usuarioLogin.getText());
+        
         
         return log;
     }
-
 
 }

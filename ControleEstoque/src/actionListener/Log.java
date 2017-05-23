@@ -8,14 +8,22 @@ package actionListener;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 /**
  *
  * @author comp8
  */
 public class Log {
-    
-    public void escreverUsuario(String user) throws IOException {
+
+    private static String user;
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public void escreverUsuario() throws IOException {
 
         FileWriter fw = new FileWriter("usuario.dat");
 
@@ -28,10 +36,9 @@ public class Log {
 
     }
 
-    public void escreverLog(String user, String action) throws IOException {
+    public void escreverLog(String action) throws IOException {
         FileWriter fw = new FileWriter("log.dat", true);
-        
-        
+
         BufferedWriter bw = new BufferedWriter(fw);
         String data = (new java.util.Date()).toString();
         String msg = data + " : " + "Usuário: " + user + "\t" + "Ação: " + action + "\r\n";
@@ -41,6 +48,17 @@ public class Log {
         bw.close();
 
     }
-    
-    
+
+    public void exceptionLog(Exception e) {
+
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        e.printStackTrace(pw);
+
+        try {
+            escreverLog(sw.toString());
+        } catch (IOException ex) {
+        }
+
+    }
 }

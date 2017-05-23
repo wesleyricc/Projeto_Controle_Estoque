@@ -61,7 +61,7 @@
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               <Component id="botaoSalvar" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-              <Component id="botaoExcluir" min="-2" max="-2" attributes="0"/>
+              <Component id="botaoLimpar" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Component id="botaoCancelar" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
@@ -104,7 +104,7 @@
               <EmptySpace pref="44" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="botaoSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="botaoExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="botaoLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="botaoCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
@@ -139,18 +139,30 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="textoRazaoFornecedor">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Exemplo: JPD Sistemas"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textoRazaoFornecedorActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textoRazaoFornecedorKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="textoNomeFornecedor">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Exemplo: Jos&#xe9; Ricardo da Silva"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textoNomeFornecedorActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textoNomeFornecedorKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="textoEnderecoFornecedor">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Exemplo: Rua S&#xe3;o Jos&#xe9;"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textoEnderecoFornecedorActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textoEnderecoFornecedorKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="botaoSalvar">
@@ -161,13 +173,10 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoSalvarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="botaoExcluir">
+    <Component class="javax.swing.JButton" name="botaoLimpar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Excluir"/>
+        <Property name="text" type="java.lang.String" value="Limpar"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoExcluirActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="botaoCancelar">
       <Properties>
@@ -175,8 +184,12 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="textoEmailFornecedor">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="vitor.santos@hotmail.com"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textoEmailFornecedorActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textoEmailFornecedorKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="cadEmailFornecedor">

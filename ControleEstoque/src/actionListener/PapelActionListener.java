@@ -1,10 +1,13 @@
 
 package actionListener;
 
+import Exception.Exceptions;
 import gets_sets.Papel;
 import janelas.FramePapel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import javax.swing.JOptionPane;
 
 
 
@@ -12,6 +15,7 @@ import java.awt.event.ActionListener;
 public class PapelActionListener implements ActionListener {
 
     private FramePapel fpapel;
+    Log logs = new Log();
     
     public PapelActionListener(FramePapel papel) {
         
@@ -25,21 +29,39 @@ public class PapelActionListener implements ActionListener {
         
         if(e.getActionCommand().equals("Salvar")){
             
-            Papel papel = fpapel.getPapel();
-            System.out.println(papel.toString());
+            
+            try {
+                Papel papel = fpapel.getPapel();
+                System.out.println(papel.toString());
+            } catch (Exceptions ex){
+                logs.exceptionLog(ex); 
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
+            
+            try {
+                logs.escreverLog("Salvou o cadastro de Papel!");
+                } catch (IOException ex) {}
 
         }
         
         
-        if(e.getActionCommand().equals("Excluir")){
+        if(e.getActionCommand().equals("Limpar")){
          
             fpapel.LimparPapel();
+            
+            try {
+                logs.escreverLog("Limpou o cadastro de Papel!");
+                } catch (IOException ex) {}
         }
             
         if(e.getActionCommand().equals("Cancelar")){
          
             fpapel.LimparPapel();
             fpapel.dispose();   
+            
+            try {
+                logs.escreverLog("Cancelou o cadastro de Papel!");
+                } catch (IOException ex) {}
         }
         
     }

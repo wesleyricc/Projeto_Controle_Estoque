@@ -83,9 +83,6 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JTextField" name="usuarioLogin">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="admin"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="labelUsuario">
       <Properties>
@@ -107,25 +104,16 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Entrar"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoEntrarActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="botaoCancelar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoCancelarActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="senhaLogin">
       <Properties>
         <Property name="text" type="java.lang.String" value="admin"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="senhaLoginActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
