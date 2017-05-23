@@ -1,5 +1,8 @@
 package janelas;
 
+import actionListener.Log;
+import gets_sets.Login;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,6 +20,10 @@ public class FramePrincipal extends javax.swing.JFrame {
     private FramePapel Papel = new FramePapel();
     private FrameFuncionario Funcionario = new FrameFuncionario();
     private FrameAjuda Ajuda = new FrameAjuda();
+    private String user;
+    private String msg;
+    Log logs = new Log();
+    Login l;
     
     /**
      * Creates new form Principal
@@ -136,6 +143,10 @@ public class FramePrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+      public void setUser(String user) {
+        this.user = user;
+    }
+    
     private void cadPapelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadPapelActionPerformed
         painelPrincipal.remove(Papel);
         painelPrincipal.add(Papel);
@@ -143,6 +154,8 @@ public class FramePrincipal extends javax.swing.JFrame {
         Papel.setPosicao();
     }//GEN-LAST:event_cadPapelActionPerformed
 
+    
+    
     private void cadFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadFornecedorActionPerformed
         painelPrincipal.remove(Fornecedor);
         painelPrincipal.add(Fornecedor);

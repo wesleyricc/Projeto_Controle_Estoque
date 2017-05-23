@@ -3,6 +3,10 @@ package janelas;
 
 import actionListener.LoginActionListener;
 import gets_sets.Login;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import javax.swing.ImageIcon;
 
 /**
@@ -14,6 +18,7 @@ public class FrameLogin extends javax.swing.JFrame {
     
     private LoginActionListener login = new LoginActionListener(this);
     private Login log = new Login();
+    private String logUser = null;
     /**
      * Creates new form Login
      */
@@ -25,6 +30,13 @@ public class FrameLogin extends javax.swing.JFrame {
         
         ImageIcon icone = new ImageIcon("src/Icon/pesquisa.png");
         setIconImage(icone.getImage());
+        
+        try {
+            String user = lerUsuario();
+            usuarioLogin.setText(user);
+        } catch (IOException ex) {
+
+        }
         
         botaoEntrar.addActionListener(login);
         botaoCancelar.addActionListener(login);
@@ -130,6 +142,19 @@ public class FrameLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private String lerUsuario() throws FileNotFoundException, IOException {
+        FileReader fr = new FileReader("usuario.dat");
+        BufferedReader br = new BufferedReader(fr);
+
+        while (br.ready()) {
+            logUser = br.readLine();
+        }
+
+        br.close();
+
+        return logUser;
+    }
+    
     
     private void botaoEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEntrarActionPerformed
        
