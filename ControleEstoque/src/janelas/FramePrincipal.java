@@ -154,7 +154,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         try {
             logs.escreverLog("Acessou cadastro de Papel!");
         } catch (IOException ex) {
-
+            logs.exceptionLog(ex); 
         }
         
     }//GEN-LAST:event_cadPapelActionPerformed
@@ -168,7 +168,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         try {
             logs.escreverLog("Acessou cadastro de Fornecedores!");
         } catch (IOException ex) {
-
+            logs.exceptionLog(ex); 
         }
 
 
@@ -184,7 +184,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         try {
             logs.escreverLog("Acessou cadastro de Funcionários!");
         } catch (IOException ex) {
-
+            logs.exceptionLog(ex); 
         }
 
     }//GEN-LAST:event_cadFuncionarioActionPerformed
@@ -199,7 +199,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         try {
             logs.escreverLog("Acessou Ajuda!");
         } catch (IOException ex) {
-
+            logs.exceptionLog(ex); 
         }
         
     }//GEN-LAST:event_menuAjudaMouseClicked
@@ -214,7 +214,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         try {
             logs.escreverLog("Saiu do Sistema!");
         } catch (IOException ex) {
-
+            logs.exceptionLog(ex); 
         }
         
         System.exit(0);

@@ -43,7 +43,7 @@ public class FrameLogin extends javax.swing.JFrame {
             String user = lerUsuario();
             usuarioLogin.setText(user);
         } catch (IOException ex) {
-
+            logs.exceptionLog(ex); 
         }
 
         botaoEntrar.addActionListener(login);

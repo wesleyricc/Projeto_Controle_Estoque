@@ -36,7 +36,9 @@ public class FuncionarioActionListener implements ActionListener {
             }
                 try {   
                     logs.escreverLog("Salvou o cadastro de Funcionários!"); 
-                } catch (IOException ex) {}   
+                } catch (IOException ex) {
+                    logs.exceptionLog(ex); 
+                }   
         }
         
         if(e.getActionCommand().equals("Limpar")){
@@ -44,7 +46,9 @@ public class FuncionarioActionListener implements ActionListener {
             
             try {
                 logs.escreverLog("Limpou o cadastro de Funcionários!");
-                } catch (IOException ex) {}
+                } catch (IOException ex) {
+                    logs.exceptionLog(ex); 
+                }
             
         }
 
@@ -52,7 +56,9 @@ public class FuncionarioActionListener implements ActionListener {
 
             try {
                 logs.escreverLog("Cancelou o cadastro de Funcionários!");
-                } catch (IOException ex) {}
+                } catch (IOException ex) {
+                    logs.exceptionLog(ex); 
+                }
             
             ffuncionario.LimparFuncionario();
             ffuncionario.dispose();

@@ -58,6 +58,7 @@ public class Log {
         try {
             escreverLog(sw.toString());
         } catch (IOException ex) {
+             
         }
 
     }

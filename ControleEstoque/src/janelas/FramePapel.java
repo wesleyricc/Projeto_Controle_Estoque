@@ -315,7 +315,9 @@ public class FramePapel extends javax.swing.JInternalFrame {
             
             try {   
                     logs.escreverLog("Erro ao cadastrar Papel!"); 
-                } catch (IOException ex) {}
+                } catch (IOException ex) {
+                    logs.exceptionLog(ex); 
+                }
             throw new Exceptions ("Preencha todos os campos corretamente!");
         }
         

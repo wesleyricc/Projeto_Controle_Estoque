@@ -33,7 +33,7 @@ public class FornecedorActionListener implements ActionListener {
             } catch (Exceptions ex) {
                 logs.exceptionLog(ex); 
                 JOptionPane.showMessageDialog(null, ex.getMessage());
-                //ex.printStackTrace();
+              
             }
               
                 
@@ -42,6 +42,7 @@ public class FornecedorActionListener implements ActionListener {
             try {
                 logs.escreverLog("Salvou o cadastro de Fornecedores!");
             } catch (IOException ex) {
+                logs.exceptionLog(ex); 
             }
         }
 
@@ -51,6 +52,7 @@ public class FornecedorActionListener implements ActionListener {
             try {
                 logs.escreverLog("Limpou o cadastro de Fornecedores!");
             } catch (IOException ex) {
+                logs.exceptionLog(ex); 
             }
         }
 
@@ -59,6 +61,7 @@ public class FornecedorActionListener implements ActionListener {
             try {
                 logs.escreverLog("Cancelou o cadastro de Fornecedores!");
             } catch (IOException ex) {
+                logs.exceptionLog(ex); 
             }
 
             ffornecedor.LimparFornecedor();

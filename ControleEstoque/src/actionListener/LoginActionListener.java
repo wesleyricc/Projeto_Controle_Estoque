@@ -36,13 +36,15 @@ public class LoginActionListener implements ActionListener {
                 
                 try {
                     logs.escreverLog("Acessou o sistema!");
-                    } catch (IOException ex) {}
+                    } catch (IOException ex) {
+                        logs.exceptionLog(ex); 
+                    }
                 
                 try {
                     logs.escreverUsuario();
 
                 } catch (IOException ex) {
-                    Logger.getLogger(LoginActionListener.class.getName()).log(Level.SEVERE, null, ex);
+                    logs.exceptionLog(ex); 
                 }
 
             } else {
@@ -56,7 +58,9 @@ public class LoginActionListener implements ActionListener {
             
             try {
                 logs.escreverLog("Cancelou seu login!");
-                } catch (IOException ex) {}
+                } catch (IOException ex) {
+                    logs.exceptionLog(ex); 
+                }
             
             System.exit(0);
         }

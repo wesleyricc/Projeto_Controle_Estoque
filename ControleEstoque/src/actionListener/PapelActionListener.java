@@ -40,7 +40,9 @@ public class PapelActionListener implements ActionListener {
             
             try {
                 logs.escreverLog("Salvou o cadastro de Papel!");
-                } catch (IOException ex) {}
+                } catch (IOException ex) {
+                    logs.exceptionLog(ex); 
+                }
 
         }
         
@@ -51,7 +53,9 @@ public class PapelActionListener implements ActionListener {
             
             try {
                 logs.escreverLog("Limpou o cadastro de Papel!");
-                } catch (IOException ex) {}
+                } catch (IOException ex) {
+                    logs.exceptionLog(ex); 
+                }
         }
             
         if(e.getActionCommand().equals("Cancelar")){
@@ -61,7 +65,9 @@ public class PapelActionListener implements ActionListener {
             
             try {
                 logs.escreverLog("Cancelou o cadastro de Papel!");
-                } catch (IOException ex) {}
+                } catch (IOException ex) {
+                    logs.exceptionLog(ex); 
+                }
         }
         
     }

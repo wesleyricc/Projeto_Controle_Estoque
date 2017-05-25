@@ -354,7 +354,9 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
         
             try {   
                     logs.escreverLog("Erro ao cadastrar Funcionário!"); 
-                } catch (IOException ex) {} 
+                } catch (IOException ex) {
+                    logs.exceptionLog(ex); 
+                } 
                
            
             throw new Exceptions("Preencha todos os campos corretamente!");  
