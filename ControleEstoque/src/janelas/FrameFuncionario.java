@@ -9,31 +9,25 @@ import java.awt.Dimension;
 import java.io.IOException;
 import javax.swing.JFormattedTextField;
 
-
 public class FrameFuncionario extends javax.swing.JInternalFrame {
 
-    
     private FuncionarioActionListener funcionario = new FuncionarioActionListener(this);
     private Funcionario f = new Funcionario();
     private String user;
     private String msg;
     Log logs = new Log();
     Login l;
-       
-   
-    public FrameFuncionario(){
+
+    public FrameFuncionario() {
         super("Cadastro de Funcionários");
         initComponents();
-
 
         botaoSalvar.addActionListener(funcionario);
         botaoCancelar.addActionListener(funcionario);
         botaoLimpar.addActionListener(funcionario);
-    
+
     }
 
-   
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -240,8 +234,8 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-   
-      
+
+
     private void textoEnderecoFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoEnderecoFuncActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textoEnderecoFuncActionPerformed
@@ -271,55 +265,55 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_textoCPFFuncActionPerformed
 
     private void textoNomeFuncKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoNomeFuncKeyTyped
-        
-        String caracteres="0987654321";
-        if(caracteres.contains(evt.getKeyChar()+"")){
-        evt.consume();          
-    }   
-        int limit = 50;
-         
-        if (textoNomeFunc.getText().length() == limit) {
-            
+
+        String caracteres = "0987654321";
+        if (caracteres.contains(evt.getKeyChar() + "")) {
             evt.consume();
         }
-        
+        int limit = 50;
+
+        if (textoNomeFunc.getText().length() == limit) {
+
+            evt.consume();
+        }
+
     }//GEN-LAST:event_textoNomeFuncKeyTyped
 
     private void textoFuncaoFuncKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoFuncaoFuncKeyTyped
-        
-        String caracteres="0987654321";
-        if(caracteres.contains(evt.getKeyChar()+"")){
-        evt.consume();
-    }
-        int limit = 50;
-         
-        if (textoFuncaoFunc.getText().length() == limit) {
-            
+
+        String caracteres = "0987654321";
+        if (caracteres.contains(evt.getKeyChar() + "")) {
             evt.consume();
         }
-       
+        int limit = 50;
+
+        if (textoFuncaoFunc.getText().length() == limit) {
+
+            evt.consume();
+        }
+
     }//GEN-LAST:event_textoFuncaoFuncKeyTyped
 
     private void textoEnderecoFuncKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoEnderecoFuncKeyTyped
-      
-         int limit = 50;
-         
+
+        int limit = 50;
+
         if (textoEnderecoFunc.getText().length() == limit) {
-            
+
             evt.consume();
         }
-       
+
     }//GEN-LAST:event_textoEnderecoFuncKeyTyped
 
     private void textoEmailFuncKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoEmailFuncKeyTyped
-        
+
         int limit = 50;
-         
+
         if (textoEmailFunc.getText().length() == limit) {
-            
+
             evt.consume();
         }
-       
+
     }//GEN-LAST:event_textoEmailFuncKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -345,26 +339,24 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
     void setLocationRelativeTo(Object object) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
     public Funcionario getFuncionario() throws Exceptions {
 
-        
-        if (textoEmailFunc.getText().trim().isEmpty() || textoCPFFunc.getText().trim().isEmpty() || textoEnderecoFunc.getText().trim().isEmpty() || 
-            textoFuncaoFunc.getText().trim().isEmpty() ||  textoNomeFunc.getText().trim().isEmpty() ||  textoTelefoneFunc.getText().trim().isEmpty()){
-        
-            try {   
-                    logs.escreverLog("Erro ao cadastrar Funcionário!"); 
-                } catch (IOException ex) {
-                    logs.exceptionLog(ex); 
-                } 
-               
-           
-            throw new Exceptions("Preencha todos os campos corretamente!");  
-       }
-        
-        String Tel= textoTelefoneFunc.getText().replaceAll("[()-]", "");
+        if (textoEmailFunc.getText().trim().isEmpty() || textoCPFFunc.getText().trim().isEmpty() || textoEnderecoFunc.getText().trim().isEmpty()
+                || textoFuncaoFunc.getText().trim().isEmpty() || textoNomeFunc.getText().trim().isEmpty() || textoTelefoneFunc.getText().trim().isEmpty()) {
+
+            try {
+                logs.escreverLog("Erro ao cadastrar Funcionário!");
+            } catch (IOException ex) {
+                logs.exceptionLog(ex);
+            }
+
+            throw new Exceptions("Preencha todos os campos corretamente!");
+        }
+
+        String Tel = textoTelefoneFunc.getText().replaceAll("[()-]", "");
         String CPF = textoCPFFunc.getText().replaceAll("[.-]", "");
-        
+
         f.setTextoCPFFunc(CPF);
         f.setTextoEmailFunc(textoEmailFunc.getText());
         f.setTextoEnderecoFunc(textoEnderecoFunc.getText());
@@ -372,9 +364,7 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
         f.setTextoNomeFunc(textoNomeFunc.getText());
         f.setTextoSexoFunc((String) textoSexoFunc.getSelectedItem());
         f.setTextoTelefoneFunc(Tel);
-        
-       
-            
+
         return f;
     }
 
@@ -388,10 +378,10 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
         textoTelefoneFunc.setText("");
         textoTelefoneFunc.setFocusLostBehavior(JFormattedTextField.PERSIST);
     }
-    
+
     public void setPosicao() {
-    Dimension d = this.getDesktopPane().getSize();
-    this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2); 
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
-    
+
 }
