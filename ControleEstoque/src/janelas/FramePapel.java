@@ -1,6 +1,6 @@
 package janelas;
 
-import Exception.Exceptions;
+import exception.Exceptions;
 import actionListener.Log;
 import actionListener.PapelActionListener;
 import gets_sets.Login;

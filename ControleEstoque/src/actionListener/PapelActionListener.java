@@ -1,7 +1,7 @@
 
 package actionListener;
 
-import Exception.Exceptions;
+import exception.Exceptions;
 import gets_sets.Papel;
 import janelas.FramePapel;
 import java.awt.event.ActionEvent;

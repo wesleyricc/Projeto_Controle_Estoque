@@ -1,6 +1,6 @@
 package actionListener;
 
-import Exception.Exceptions;
+import exception.Exceptions;
 import gets_sets.Fornecedor;
 import janelas.FrameFornecedor;
 import janelas.FrameLogin;

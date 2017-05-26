@@ -1,6 +1,6 @@
 package janelas;
 
-import Exception.Exceptions;
+import exception.Exceptions;
 import actionListener.FuncionarioActionListener;
 import actionListener.Log;
 import gets_sets.Funcionario;
