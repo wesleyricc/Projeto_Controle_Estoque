@@ -5,7 +5,7 @@ public class Fornecedor {
     private String textoRazaoFornecedor;
     private String textoNomeFornecedor;
     private String textoEnderecoFornecedor;
-    private String textoCPFCNPJFornecedor;
+    private int textoCNPJFornecedor;
     private String textoTelefoneFornecedor;
     private String textoEmailFornecedor;
 
@@ -33,12 +33,12 @@ public class Fornecedor {
         this.textoEnderecoFornecedor = textoEnderecoFornecedor;
     }
 
-    public String getTextoCPFCNPJFornecedor() {
-        return textoCPFCNPJFornecedor;
+    public int getTextoCNPJFornecedor() {
+        return textoCNPJFornecedor;
     }
 
-    public void setTextoCPFCNPJFornecedor(String textoCPFCNPJFornecedor) {
-        this.textoCPFCNPJFornecedor = textoCPFCNPJFornecedor;
+    public void setTextoCNPJFornecedor(int textoCNPJFornecedor) {
+        this.textoCNPJFornecedor = textoCNPJFornecedor;
     }
 
     public String getTextoTelefoneFornecedor() {
@@ -59,7 +59,7 @@ public class Fornecedor {
 
     @Override
     public String toString() {
-        return "Fornecedor{\n\n" + "textoRazaoFornecedor=" + textoRazaoFornecedor + ",\n textoNomeFornecedor=" + textoNomeFornecedor + ",\n textoEnderecoFornecedor=" + textoEnderecoFornecedor + ",\n textoCPFCNPJFornecedor=" + textoCPFCNPJFornecedor + ",\n textoTelefoneFornecedor=" + textoTelefoneFornecedor + ",\n textoEmailFornecedor=" + textoEmailFornecedor + '}';
+        return "Fornecedor{\n\n" + "textoRazaoFornecedor=" + textoRazaoFornecedor + ",\n textoNomeFornecedor=" + textoNomeFornecedor + ",\n textoEnderecoFornecedor=" + textoEnderecoFornecedor + ",\n textoCPFCNPJFornecedor=" + textoCNPJFornecedor + ",\n textoTelefoneFornecedor=" + textoTelefoneFornecedor + ",\n textoEmailFornecedor=" + textoEmailFornecedor + '}';
     }
     
 }

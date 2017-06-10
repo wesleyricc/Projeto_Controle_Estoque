@@ -3,6 +3,7 @@ package janelas;
 import exception.Exceptions;
 import actionListener.FornecedorActionListener;
 import actionListener.Log;
+import banco.FornecedorDAO;
 import gets_sets.Fornecedor;
 import gets_sets.Login;
 import java.awt.Dimension;
@@ -125,6 +126,11 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        textoCNPJFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoCNPJFornecedorActionPerformed(evt);
+            }
+        });
 
         try {
             textoTelefoneFornecedor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
@@ -299,8 +305,13 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_textoEmailFornecedorKeyTyped
 
     private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
-        // TODO add your handling code here:
+
+        
     }//GEN-LAST:event_botaoSalvarActionPerformed
+
+    private void textoCNPJFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoCNPJFornecedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textoCNPJFornecedorActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -328,6 +339,7 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
     public Fornecedor getFornecedor() throws Exceptions {
 
         String Tel = textoTelefoneFornecedor.getText().replaceAll("[()-]", "");
+        int CNPJ = Integer.parseInt(textoCNPJFornecedor.getText().replaceAll("[./-]",""));
 
         if (textoRazaoFornecedor.getText().trim().isEmpty() || textoEmailFornecedor.getText().trim().isEmpty() || textoEnderecoFornecedor.getText().trim().isEmpty()
                 || textoNomeFornecedor.getText().trim().isEmpty() || textoCNPJFornecedor.getText().trim().isEmpty() || textoTelefoneFornecedor.getText().trim().isEmpty()) {
@@ -341,7 +353,7 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
             throw new Exceptions("Preencha todos os campos corretamente!");
         }
 
-        forn.setTextoCPFCNPJFornecedor(textoCNPJFornecedor.getText());
+        forn.setTextoCNPJFornecedor(CNPJ);
         forn.setTextoEmailFornecedor(textoEmailFornecedor.getText());
         forn.setTextoEnderecoFornecedor(textoEnderecoFornecedor.getText());
         forn.setTextoNomeFornecedor(textoNomeFornecedor.getText());

@@ -1,10 +1,9 @@
 package actionListener;
 
+import banco.FornecedorDAO;
 import exception.Exceptions;
 import gets_sets.Fornecedor;
 import janelas.FrameFornecedor;
-import janelas.FrameLogin;
-import janelas.FramePapel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -14,9 +13,10 @@ import javax.swing.JOptionPane;
 
 public class FornecedorActionListener implements ActionListener {
 
-    private FrameFornecedor ffornecedor;
-    private Log logs = new Log();
-    private Fornecedor fforn = new Fornecedor();
+    private final FrameFornecedor ffornecedor;
+    private Fornecedor f;
+    private final Log logs = new Log();
+    FornecedorDAO fornDAO = new FornecedorDAO();
 
     public FornecedorActionListener(FrameFornecedor fornecedor) {
         this.ffornecedor = fornecedor;
@@ -26,24 +26,26 @@ public class FornecedorActionListener implements ActionListener {
 
         if (e.getActionCommand().equals("Salvar")) {
 
-            Fornecedor f;
             try {
                 f = ffornecedor.getFornecedor();
-                System.out.println(f.toString());
             } catch (Exceptions ex) {
-                logs.exceptionLog(ex); 
-                JOptionPane.showMessageDialog(null, ex.getMessage());
-              
+                Logger.getLogger(FornecedorActionListener.class.getName()).log(Level.SEVERE, null, ex);
             }
-              
-                
+
             String msg = "Cadastrou um fornecedor!";
 
             try {
                 logs.escreverLog("Salvou o cadastro de Fornecedores!");
             } catch (IOException ex) {
-                logs.exceptionLog(ex); 
+                logs.exceptionLog(ex);
             }
+
+            try {
+                fornDAO.insert(f);
+            } catch (Exceptions ex) {
+                Logger.getLogger(FornecedorActionListener.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
         }
 
         if (e.getActionCommand().equals("Limpar")) {
@@ -52,7 +54,7 @@ public class FornecedorActionListener implements ActionListener {
             try {
                 logs.escreverLog("Limpou o cadastro de Fornecedores!");
             } catch (IOException ex) {
-                logs.exceptionLog(ex); 
+                logs.exceptionLog(ex);
             }
         }
 
@@ -61,7 +63,7 @@ public class FornecedorActionListener implements ActionListener {
             try {
                 logs.escreverLog("Cancelou o cadastro de Fornecedores!");
             } catch (IOException ex) {
-                logs.exceptionLog(ex); 
+                logs.exceptionLog(ex);
             }
 
             ffornecedor.LimparFornecedor();
