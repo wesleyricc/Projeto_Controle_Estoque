@@ -15,15 +15,16 @@ public class FuncionarioDAO {
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "insert into funcionario (nome, funcao, endereco, telefone, sexo, email) values(?,?,?,?,?,?)";
+            String sql = "insert into funcionario (nome, funcao, cpf, endereco, telefone, sexo, email) values(?,?,?,?,?,?,?)";
             ps = conn.prepareStatement(sql);
             
             ps.setString(1, forn.getTextoNomeFunc());
             ps.setString(2, forn.getTextoFuncaoFunc());
-            ps.setString(3, forn.getTextoEnderecoFunc());
-            ps.setString(4, forn.getTextoTelefoneFunc());
-            ps.setString(5, forn.getTextoSexoFunc());
-            ps.setString(6, forn.getTextoEmailFunc());
+            ps.setString(3, forn.getTextoCPFFunc());
+            ps.setString(4, forn.getTextoEnderecoFunc());
+            ps.setString(5, forn.getTextoTelefoneFunc());
+            ps.setString(6, forn.getTextoSexoFunc());
+            ps.setString(7, forn.getTextoEmailFunc());
             
             
             ps.execute();

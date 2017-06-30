@@ -339,8 +339,9 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
     public Fornecedor getFornecedor() throws Exceptions {
 
         String Tel = textoTelefoneFornecedor.getText().replaceAll("[()-]", "");
-        int CNPJ = Integer.parseInt(textoCNPJFornecedor.getText().replaceAll("[./-]",""));
+        String CNPJ = textoCNPJFornecedor.getText().trim().replaceAll("[./-]","");
 
+        
         if (textoRazaoFornecedor.getText().trim().isEmpty() || textoEmailFornecedor.getText().trim().isEmpty() || textoEnderecoFornecedor.getText().trim().isEmpty()
                 || textoNomeFornecedor.getText().trim().isEmpty() || textoCNPJFornecedor.getText().trim().isEmpty() || textoTelefoneFornecedor.getText().trim().isEmpty()) {
             

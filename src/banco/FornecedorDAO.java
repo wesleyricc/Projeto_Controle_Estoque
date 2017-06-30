@@ -11,19 +11,26 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author comp8
  */
 public class FornecedorDAO {
-
-    public void insert(Fornecedor forn) throws Exceptions {
+    
+    
+    
+    public void insert(Fornecedor forn)throws Exceptions {
         Connection conn = null;
         PreparedStatement ps = null;
+        
         try {
             conn = Conexao.getConnection();
             String sql = "insert into fornecedor (razao_social, nome, endereco, telefone, email, cnpj) values(?,?,?,?,?,?)";
+            
+            
             ps = conn.prepareStatement(sql);
             
             ps.setString(1, forn.getTextoRazaoFornecedor());
@@ -31,7 +38,7 @@ public class FornecedorDAO {
             ps.setString(3, forn.getTextoEnderecoFornecedor());
             ps.setString(4, forn.getTextoTelefoneFornecedor());
             ps.setString(5, forn.getTextoEmailFornecedor());
-            ps.setInt(6, forn.getTextoCNPJFornecedor());
+            ps.setString(6, forn.getTextoCNPJFornecedor());
             
             
             ps.execute();

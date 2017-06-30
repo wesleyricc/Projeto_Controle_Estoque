@@ -5,7 +5,7 @@ public class Fornecedor {
     private String textoRazaoFornecedor;
     private String textoNomeFornecedor;
     private String textoEnderecoFornecedor;
-    private int textoCNPJFornecedor;
+    private String textoCNPJFornecedor;
     private String textoTelefoneFornecedor;
     private String textoEmailFornecedor;
 
@@ -33,11 +33,11 @@ public class Fornecedor {
         this.textoEnderecoFornecedor = textoEnderecoFornecedor;
     }
 
-    public int getTextoCNPJFornecedor() {
+    public String getTextoCNPJFornecedor() {
         return textoCNPJFornecedor;
     }
 
-    public void setTextoCNPJFornecedor(int textoCNPJFornecedor) {
+    public void setTextoCNPJFornecedor(String textoCNPJFornecedor) {
         this.textoCNPJFornecedor = textoCNPJFornecedor;
     }
 
