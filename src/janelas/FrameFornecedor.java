@@ -8,11 +8,14 @@ import gets_sets.Fornecedor;
 import gets_sets.Login;
 import java.awt.Dimension;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 
 public class FrameFornecedor extends javax.swing.JInternalFrame {
 
+    private FornecedorDAO fornDAO = new FornecedorDAO();
     private FornecedorActionListener fornecedor = new FornecedorActionListener(this);
     private Fornecedor forn = new Fornecedor();
     private String user;
@@ -126,6 +129,11 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        textoCNPJFornecedor.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                textoCNPJFornecedorFocusLost(evt);
+            }
+        });
         textoCNPJFornecedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textoCNPJFornecedorActionPerformed(evt);
@@ -313,6 +321,10 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textoCNPJFornecedorActionPerformed
 
+    private void textoCNPJFornecedorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textoCNPJFornecedorFocusLost
+      
+    }//GEN-LAST:event_textoCNPJFornecedorFocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoCancelar;
@@ -335,6 +347,9 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
     void setLocationRelativeTo(Object object) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+
+    
 
     public Fornecedor getFornecedor() throws Exceptions {
 

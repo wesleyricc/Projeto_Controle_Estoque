@@ -34,6 +34,10 @@ public class FramePrincipal extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null); // Centralizar
 
+        FrameTabelaEstoque framet = new FrameTabelaEstoque();
+        
+        painelPrincipal.add(framet);
+        framet.setVisible(true);
     }
 
     /**

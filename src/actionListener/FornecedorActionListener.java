@@ -32,6 +32,33 @@ public class FornecedorActionListener implements ActionListener {
                 Logger.getLogger(FornecedorActionListener.class.getName()).log(Level.SEVERE, null, ex);
             }
 
+            String CNPJ = f.getTextoCNPJFornecedor();
+
+            try {
+                if (CNPJ.equals(fornDAO.verificaCNPJ(CNPJ))) {
+
+                    int n = JOptionPane.showConfirmDialog(null, "CNPJ já cadastrado. Deseja atualiza-lo?");
+
+                    if (n == 0) {
+
+                        fornDAO.update(f);
+
+                        return;
+                    }
+                    if(n == 1){
+                        return;
+                    }else{
+                        ffornecedor.LimparFornecedor();
+                        ffornecedor.dispose();
+                        
+                    }
+                   
+                    
+                }
+            } catch (Exceptions ex) {
+                Logger.getLogger(FrameFornecedor.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
             String msg = "Cadastrou um fornecedor!";
 
             try {

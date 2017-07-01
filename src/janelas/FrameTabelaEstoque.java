@@ -5,6 +5,13 @@
  */
 package janelas;
 
+import banco.FornecedorDAO;
+import gets_sets.Fornecedor;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author comp8
@@ -14,8 +21,37 @@ public class FrameTabelaEstoque extends javax.swing.JInternalFrame {
     /**
      * Creates new form FrameTabelaEstoque
      */
+    private final String[] columnNames = {"Tipo", "Código", "Fabricante", "Gramatura", "Formato", "Valor", "Máximo em Estoque"};
+    private DefaultTableModel model = new DefaultTableModel() {
+        private static final long serialVersionUID = 1L;
+
+    };
+
     public FrameTabelaEstoque() {
         initComponents();
+        model.setColumnIdentifiers(columnNames);
+        tabelaItens.setModel(model);
+        
+        
+        
+        
+    }
+    
+    
+    public void attTabela(){
+        
+        FornecedorDAO fornDAO = new FornecedorDAO();
+        List<Fornecedor> lista = fornDAO.getAll();
+        
+        for(int i=0; i<lista.size(); i++){
+            //Fornecedor f = lista.get(i);
+            //model.addRow(new Object[]{f.});
+            
+            //FAZER O DO PAPEL
+            
+            //"ID", "Tipo", "Código", "Fabricante", "Gramatura", "Formato", "Valor", "Máximo em Estoque"
+            
+        }
     }
 
     /**
@@ -28,49 +64,45 @@ public class FrameTabelaEstoque extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaItens = new javax.swing.JTable();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaItens.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Código", "Material", "Fornecedor", "Quantidade", "Gramatura", "Formato", "Valor de Venda"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
-            };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
-        });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-            jTable1.getColumnModel().getColumn(4).setResizable(false);
-            jTable1.getColumnModel().getColumn(5).setResizable(false);
-            jTable1.getColumnModel().getColumn(6).setResizable(false);
+        ));
+        jScrollPane1.setViewportView(tabelaItens);
+        if (tabelaItens.getColumnModel().getColumnCount() > 0) {
+            tabelaItens.getColumnModel().getColumn(0).setResizable(false);
+            tabelaItens.getColumnModel().getColumn(1).setResizable(false);
+            tabelaItens.getColumnModel().getColumn(2).setResizable(false);
+            tabelaItens.getColumnModel().getColumn(3).setResizable(false);
+            tabelaItens.getColumnModel().getColumn(4).setResizable(false);
+            tabelaItens.getColumnModel().getColumn(5).setResizable(false);
+            tabelaItens.getColumnModel().getColumn(6).setResizable(false);
         }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 62, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(93, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -79,6 +111,6 @@ public class FrameTabelaEstoque extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabelaItens;
     // End of variables declaration//GEN-END:variables
 }
