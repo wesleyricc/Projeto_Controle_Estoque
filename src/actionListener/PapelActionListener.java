@@ -1,13 +1,17 @@
 
 package actionListener;
 
+import banco.PapelDAO;
 import exception.Exceptions;
 import gets_sets.Papel;
 import janelas.FramePapel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import static org.hsqldb.HsqlDateTime.e;
 
 
 
@@ -15,7 +19,9 @@ import javax.swing.JOptionPane;
 public class PapelActionListener implements ActionListener {
 
     private FramePapel fpapel;
+    private Papel p;
     Log logs = new Log();
+    PapelDAO papelDAO = new PapelDAO();
     
     public PapelActionListener(FramePapel papel) {
         
@@ -31,8 +37,7 @@ public class PapelActionListener implements ActionListener {
             
             
             try {
-                Papel papel = fpapel.getPapel();
-                System.out.println(papel.toString());
+                p = fpapel.getPapel();
             } catch (Exceptions ex){
                 logs.exceptionLog(ex); 
                 JOptionPane.showMessageDialog(null, ex.getMessage());
@@ -44,9 +49,15 @@ public class PapelActionListener implements ActionListener {
                     logs.exceptionLog(ex); 
                 }
 
+            try {
+                papelDAO.insert(p);
+            } catch (Exceptions ex) {
+                Logger.getLogger(PapelActionListener.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                
         }
-        
-        
+            
+     
         if(e.getActionCommand().equals("Limpar")){
          
             fpapel.LimparPapel();
@@ -71,5 +82,6 @@ public class PapelActionListener implements ActionListener {
         }
         
     }
-    
 }
+    
+

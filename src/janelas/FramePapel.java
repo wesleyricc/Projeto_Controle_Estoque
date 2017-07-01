@@ -344,6 +344,7 @@ public class FramePapel extends javax.swing.JInternalFrame {
         textoFabricantePapel.setSelectedIndex(0);
         textoFormatoPapel.setSelectedIndex(0);
         textoVendaPapel.setText("");
+        textoGramaturaPapel.setSelectedIndex(0);
     }
 
     public void setPosicao() {
