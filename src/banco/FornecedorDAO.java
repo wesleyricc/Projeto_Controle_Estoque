@@ -13,8 +13,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -22,6 +20,48 @@ import java.util.logging.Logger;
  */
 public class FornecedorDAO {
 
+    
+    public void delete(Fornecedor f) throws Exceptions {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = Conexao.getConnection();
+            String sql = "delete from fornecedor where cnpj = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, f.getTextoCNPJFornecedor());
+            ps.execute();
+
+            conn.commit();
+        } catch(SQLException e) {
+            System.out.println("ERRO: " + e.getMessage());
+
+            if(conn != null){
+                try {
+                    conn.rollback();
+                } catch (SQLException ex) {
+                    System.out.println("ERRO: " + ex.getMessage());
+                }
+            }
+
+
+        } finally {
+            if( ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println("ERRO: " + ex.getMessage());
+                }
+            }
+            if(conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    System.out.println("ERRO: " + ex.getMessage());
+                }
+            }
+        }
+    }
+    
     public void update(Fornecedor f) throws Exceptions {
         Connection conn = null;
         PreparedStatement ps = null;
@@ -69,6 +109,56 @@ public class FornecedorDAO {
             }
         }
     }
+    
+    public Fornecedor getFornecedor(String cnpj) throws Exceptions {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = Conexao.getConnection();
+            String sql = "select razao_social, nome, endereco, telefone, email, cnpj  from fornecedor where cnpj = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, cnpj);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()) {
+
+                String razao_social = rs.getString(1);
+                String nome = rs.getString(2);
+                String endereco = rs.getString(3);
+                String telefone = rs.getString(4);
+                String email = rs.getString(5);
+                String CNPJ = rs.getString(6);
+                
+                Fornecedor f = new Fornecedor();
+                f.setTextoRazaoFornecedor(razao_social);
+                f.setTextoNomeFornecedor(nome);
+                f.setTextoEnderecoFornecedor(endereco);
+                f.setTextoTelefoneFornecedor(telefone);
+                f.setTextoEmailFornecedor(email);
+                f.setTextoCNPJFornecedor(CNPJ);
+  
+                return f;
+            }
+        } catch(SQLException e) {
+            System.out.println("ERRO: " + e.getMessage());
+        } finally {
+            if( ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println("ERRO: " + ex.getMessage());
+                }
+            }
+            if(conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    System.out.println("ERRO: " + ex.getMessage());
+                }
+            }
+        }
+        return null;
+    }
+    
 
     public List<Fornecedor> getAll() throws Exceptions {
         List<Fornecedor> lista = new ArrayList<Fornecedor>();

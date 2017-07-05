@@ -17,6 +17,7 @@ public class FornecedorActionListener implements ActionListener {
     private Fornecedor f;
     private final Log logs = new Log();
     FornecedorDAO fornDAO = new FornecedorDAO();
+    int cont = 0;
 
     public FornecedorActionListener(FrameFornecedor fornecedor) {
         this.ffornecedor = fornecedor;
@@ -37,23 +38,32 @@ public class FornecedorActionListener implements ActionListener {
             try {
                 if (CNPJ.equals(fornDAO.verificaCNPJ(CNPJ))) {
 
-                    int n = JOptionPane.showConfirmDialog(null, "CNPJ já cadastrado. Deseja atualiza-lo?");
+                    if (cont == 0) {
+                        cont = 1;
+                        int n = JOptionPane.showConfirmDialog(null, "CNPJ já cadastrado. Deseja editar?");
+                        if (n == 0) {
 
-                    if (n == 0) {
+                            Fornecedor f = fornDAO.getFornecedor(CNPJ);
 
+                            ffornecedor.editarFornecedor(f);
+
+                            ffornecedor.setVisible(true);
+                            return;
+                        }
+                        if (n == 1) {
+                            return;
+                        } else {
+                            ffornecedor.LimparFornecedor();
+                            ffornecedor.dispose();
+                            return;
+
+                        }
+                    }
+                    if (cont == 1) {
+                        cont = 0;
                         fornDAO.update(f);
+                    }
 
-                        return;
-                    }
-                    if(n == 1){
-                        return;
-                    }else{
-                        ffornecedor.LimparFornecedor();
-                        ffornecedor.dispose();
-                        
-                    }
-                   
-                    
                 }
             } catch (Exceptions ex) {
                 Logger.getLogger(FrameFornecedor.class.getName()).log(Level.SEVERE, null, ex);
@@ -96,6 +106,25 @@ public class FornecedorActionListener implements ActionListener {
             ffornecedor.LimparFornecedor();
             ffornecedor.dispose();
         }
+        
+        if (e.getActionCommand().equals("Excluir")) {
+
+            if(cont == 1){
+                cont = 0;
+                try {
+                    fornDAO.delete(f);
+                    JOptionPane.showMessageDialog(null, "Excluido com sucesso do banco de dados!");
+                } catch (Exceptions ex) {
+                    Logger.getLogger(FornecedorActionListener.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            }else{
+                JOptionPane.showMessageDialog(null, "Fornecedor não cadastrado no banco de dados!");
+            }
+                       
+        }
+        
+        
 
     }
 }

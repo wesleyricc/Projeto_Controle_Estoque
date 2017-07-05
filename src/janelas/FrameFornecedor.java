@@ -8,8 +8,6 @@ import gets_sets.Fornecedor;
 import gets_sets.Login;
 import java.awt.Dimension;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 
@@ -28,8 +26,9 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
         initComponents();
 
         botaoSalvar.addActionListener(fornecedor);
-        botaoCancelar.addActionListener(fornecedor);
+        botaoExcluir.addActionListener(fornecedor);
         botaoLimpar.addActionListener(fornecedor);
+        botaoCancelar.addActionListener(fornecedor);
 
     }
 
@@ -47,11 +46,12 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
         textoEnderecoFornecedor = new javax.swing.JTextField();
         botaoSalvar = new javax.swing.JButton();
         botaoLimpar = new javax.swing.JButton();
-        botaoCancelar = new javax.swing.JButton();
+        botaoExcluir = new javax.swing.JButton();
         textoEmailFornecedor = new javax.swing.JTextField();
         cadEmailFornecedor = new javax.swing.JLabel();
         textoCNPJFornecedor = new javax.swing.JFormattedTextField();
         textoTelefoneFornecedor = new javax.swing.JFormattedTextField();
+        botaoCancelar = new javax.swing.JButton();
 
         cadRazaoFornecedor.setText("Razão Social");
 
@@ -108,7 +108,12 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
 
         botaoLimpar.setText("Limpar");
 
-        botaoCancelar.setText("Cancelar");
+        botaoExcluir.setText("Excluir");
+        botaoExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoExcluirActionPerformed(evt);
+            }
+        });
 
         textoEmailFornecedor.setToolTipText("vitor.santos@hotmail.com");
         textoEmailFornecedor.addActionListener(new java.awt.event.ActionListener() {
@@ -151,6 +156,8 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
             }
         });
 
+        botaoCancelar.setText("Cancelar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -158,39 +165,52 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(26, 26, 26)
                                 .addComponent(cadRazaoFornecedor))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cadNomeFornecedor)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cadNomeFornecedor, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(cadCPFFornecedor, javax.swing.GroupLayout.Alignment.TRAILING))))
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(textoRazaoFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(textoNomeFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textoCNPJFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(textoCNPJFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cadTelefoneFornecedor)
-                            .addComponent(cadEmailFornecedor)
-                            .addComponent(cadEnderecoFornecedor)
-                            .addComponent(cadCPFFornecedor))
-                        .addGap(29, 29, 29)
+                        .addGap(65, 65, 65)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textoEmailFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textoEnderecoFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textoTelefoneFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(44, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(botaoSalvar)
-                .addGap(34, 34, 34)
-                .addComponent(botaoLimpar)
-                .addGap(28, 28, 28)
-                .addComponent(botaoCancelar)
-                .addGap(118, 118, 118))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(107, 107, 107)
+                                .addComponent(botaoLimpar)
+                                .addGap(35, 35, 35)
+                                .addComponent(botaoExcluir)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(botaoCancelar)
+                                .addGap(12, 12, 12))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(cadEnderecoFornecedor)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(cadEmailFornecedor)
+                                            .addComponent(cadTelefoneFornecedor)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(botaoSalvar)
+                                        .addGap(4, 4, 4)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(21, 21, 21)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(textoTelefoneFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(textoEmailFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 4, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(textoEnderecoFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,10 +239,11 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textoEmailFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cadEmailFornecedor))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoSalvar)
                     .addComponent(botaoLimpar)
+                    .addComponent(botaoExcluir)
                     .addComponent(botaoCancelar))
                 .addGap(22, 22, 22))
         );
@@ -325,9 +346,14 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
       
     }//GEN-LAST:event_textoCNPJFornecedorFocusLost
 
+    private void botaoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoExcluirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoCancelar;
+    private javax.swing.JButton botaoExcluir;
     private javax.swing.JButton botaoLimpar;
     private javax.swing.JButton botaoSalvar;
     private javax.swing.JLabel cadCPFFornecedor;
@@ -377,6 +403,15 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
         forn.setTextoTelefoneFornecedor(Tel);
 
         return forn;
+    }
+    
+    public void editarFornecedor(Fornecedor f){
+        textoCNPJFornecedor.setText(f.getTextoCNPJFornecedor());
+        textoEmailFornecedor.setText(f.getTextoEmailFornecedor());
+        textoEnderecoFornecedor.setText(f.getTextoEnderecoFornecedor());
+        textoNomeFornecedor.setText(f.getTextoNomeFornecedor());
+        textoRazaoFornecedor.setText(f.getTextoRazaoFornecedor());
+        textoTelefoneFornecedor.setText(f.getTextoTelefoneFornecedor());
     }
 
     public void LimparFornecedor() {

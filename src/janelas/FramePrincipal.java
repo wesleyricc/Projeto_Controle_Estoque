@@ -3,8 +3,6 @@ package janelas;
 import actionListener.Log;
 import gets_sets.Login;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 /*
@@ -22,6 +20,7 @@ public class FramePrincipal extends javax.swing.JFrame {
     private FramePapel Papel = new FramePapel();
     private FrameFuncionario Funcionario = new FrameFuncionario();
     private FrameAjuda Ajuda = new FrameAjuda();
+    private FrameTabelaEstoque TabelaEstoque = new FrameTabelaEstoque();
     private String user;
     private String msg;
     Log logs = new Log();
@@ -34,10 +33,6 @@ public class FramePrincipal extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null); // Centralizar
 
-        FrameTabelaEstoque framet = new FrameTabelaEstoque();
-        
-        painelPrincipal.add(framet);
-        framet.setVisible(true);
     }
 
     /**
@@ -56,6 +51,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         cadFornecedor = new javax.swing.JMenuItem();
         cadPapel = new javax.swing.JMenuItem();
         cadFuncionario = new javax.swing.JMenuItem();
+        menuConsultar = new javax.swing.JMenuItem();
         menuSair = new javax.swing.JMenuItem();
         menuAjuda = new javax.swing.JMenu();
 
@@ -112,6 +108,15 @@ public class FramePrincipal extends javax.swing.JFrame {
         menuCadastro.add(cadFuncionario);
 
         menuArquivo.add(menuCadastro);
+
+        menuConsultar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        menuConsultar.setText("Consultar");
+        menuConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConsultarActionPerformed(evt);
+            }
+        });
+        menuArquivo.add(menuConsultar);
 
         menuSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_MASK));
         menuSair.setText("Sair");
@@ -227,6 +232,22 @@ public class FramePrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_menuSairActionPerformed
 
+    private void menuConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultarActionPerformed
+        painelPrincipal.remove(TabelaEstoque);
+        painelPrincipal.add(TabelaEstoque);
+        TabelaEstoque.setVisible(true);
+        TabelaEstoque.setPosicao();
+        Fornecedor.setVisible(false);
+        Papel.setVisible(false);
+        Funcionario.setVisible(false);
+
+        try {
+            logs.escreverLog("Acessou menu de consulta!");
+        } catch (IOException ex) {
+            logs.exceptionLog(ex);
+        }
+    }//GEN-LAST:event_menuConsultarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraMenu;
@@ -236,6 +257,7 @@ public class FramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu menuAjuda;
     private javax.swing.JMenu menuArquivo;
     private javax.swing.JMenu menuCadastro;
+    private javax.swing.JMenuItem menuConsultar;
     private javax.swing.JMenuItem menuSair;
     private javax.swing.JDesktopPane painelPrincipal;
     // End of variables declaration//GEN-END:variables

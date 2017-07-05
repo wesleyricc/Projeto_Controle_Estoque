@@ -5,11 +5,14 @@
  */
 package janelas;
 
-import banco.FornecedorDAO;
-import gets_sets.Fornecedor;
-import java.util.ArrayList;
+import actionListener.TabelaEstoqueActionListener;
+import banco.PapelDAO;
+import exception.Exceptions;
+import gets_sets.Papel;
+import java.awt.Dimension;
 import java.util.List;
-import javax.swing.table.AbstractTableModel;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,7 +24,8 @@ public class FrameTabelaEstoque extends javax.swing.JInternalFrame {
     /**
      * Creates new form FrameTabelaEstoque
      */
-    private final String[] columnNames = {"Tipo", "Código", "Fabricante", "Gramatura", "Formato", "Valor", "Máximo em Estoque"};
+    private TabelaEstoqueActionListener tabelaestoque = new TabelaEstoqueActionListener(this);
+    private final String[] columnNames = {"Código", "Tipo", "Fabricante", "Gramatura", "Formato", "Valor", "Máximo em Estoque"};
     private DefaultTableModel model = new DefaultTableModel() {
         private static final long serialVersionUID = 1L;
 
@@ -31,27 +35,48 @@ public class FrameTabelaEstoque extends javax.swing.JInternalFrame {
         initComponents();
         model.setColumnIdentifiers(columnNames);
         tabelaItens.setModel(model);
-        
-        
-        
-        
+        try {
+            attTabela();
+        } catch (Exceptions ex) {
+            Logger.getLogger(FrameTabelaEstoque.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        botaoSair.addActionListener(tabelaestoque);
+
+    }
+
+    public int selecionar() {
+        int linha = tabelaItens.getSelectedRow();
+        if (linha == -1) {
+            return -1; //Não tem nada selecionado
+        }
+
+        return linha;
     }
     
-    
-    public void attTabela(){
+    public String pegaValor(){
         
-        FornecedorDAO fornDAO = new FornecedorDAO();
-        List<Fornecedor> lista = fornDAO.getAll();
+        int linha = selecionar();
+        String cod_papel = tabelaItens.getValueAt(linha, 0).toString();
         
-        for(int i=0; i<lista.size(); i++){
-            //Fornecedor f = lista.get(i);
-            //model.addRow(new Object[]{f.});
-            
-            //FAZER O DO PAPEL
-            
-            //"ID", "Tipo", "Código", "Fabricante", "Gramatura", "Formato", "Valor", "Máximo em Estoque"
-            
+        return cod_papel;
+    }
+
+    public void attTabela() throws Exceptions {
+
+        PapelDAO papelDAO = new PapelDAO();
+        List<Papel> lista = papelDAO.getAll();
+
+        for (int i = 0; i < lista.size(); i++) {
+            Papel p = lista.get(i);
+            model.addRow(new Object[]{p.getTextoCodpapel(), p.getTextoTipopapel(), p.getTextoFormatopapel(), p.getTextoGramaturapapel(), p.getTextoFabricantepapel(), p.getTextoEstoquepapel(), p.getTextoVendaPapel()});
+
         }
+    }
+
+    public void setPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
 
     /**
@@ -65,6 +90,7 @@ public class FrameTabelaEstoque extends javax.swing.JInternalFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaItens = new javax.swing.JTable();
+        botaoSair = new javax.swing.JButton();
 
         tabelaItens.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -88,6 +114,13 @@ public class FrameTabelaEstoque extends javax.swing.JInternalFrame {
             tabelaItens.getColumnModel().getColumn(6).setResizable(false);
         }
 
+        botaoSair.setText("Sair");
+        botaoSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoSairActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -96,20 +129,31 @@ public class FrameTabelaEstoque extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(301, 301, 301)
+                .addComponent(botaoSair)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(93, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(botaoSair)
+                .addGap(14, 14, 14))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botaoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSairActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoSairActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoSair;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelaItens;
     // End of variables declaration//GEN-END:variables
