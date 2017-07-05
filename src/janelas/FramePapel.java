@@ -3,10 +3,15 @@ package janelas;
 import exception.Exceptions;
 import actionListener.Log;
 import actionListener.PapelActionListener;
+import banco.PapelDAO;
 import gets_sets.Login;
 import gets_sets.Papel;
 import java.awt.Dimension;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Vector;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 public class FramePapel extends javax.swing.JInternalFrame {
@@ -15,9 +20,9 @@ public class FramePapel extends javax.swing.JInternalFrame {
     private Papel pap = new Papel();
     private String user;
     private String msg;
+    private PapelDAO papelDAO = new PapelDAO();
     Log logs = new Log();
     Login l;
-    
 
     public FramePapel() {
         super("Cadastro de Papéis");
@@ -26,11 +31,14 @@ public class FramePapel extends javax.swing.JInternalFrame {
         botaoSalvar.addActionListener(papel);
         botaoCancelar.addActionListener(papel);
         botaoLimpar.addActionListener(papel);
+
+        Vector itens = papelDAO.carregaComboBox();
+        DefaultComboBoxModel model = new DefaultComboBoxModel(itens);
+        textoFabricantePapel.setModel(model);
         
+
     }
 
-
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -119,6 +127,11 @@ public class FramePapel extends javax.swing.JInternalFrame {
         });
 
         textoFabricantePapel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Suzano", "GRPaper", "Klabin", "Ibema", "Santa Maria" }));
+        textoFabricantePapel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoFabricantePapelActionPerformed(evt);
+            }
+        });
 
         textoVendaPapel.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
         textoVendaPapel.setToolTipText("Exemplo: 200");
@@ -219,7 +232,7 @@ public class FramePapel extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
     private void textoEstoquePapelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoEstoquePapelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textoEstoquePapelActionPerformed
@@ -242,54 +255,59 @@ public class FramePapel extends javax.swing.JInternalFrame {
 
     private void textoCodPapelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoCodPapelKeyTyped
 
-        String caracteres="0987654321";
-        if(!caracteres.contains(evt.getKeyChar()+"")){
+        String caracteres = "0987654321";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
             JOptionPane.showMessageDialog(null, "Digite apenas números");
             evt.consume();
-    }
+        }
         int limit = 20;
-         
+
         if (textoCodPapel.getText().length() == limit) {
-            
+
             evt.consume();
         }
-        
+
     }//GEN-LAST:event_textoCodPapelKeyTyped
+
 
     private void textoVendaPapelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoVendaPapelKeyTyped
 
-        String caracteres="0987654321";
-        if(!caracteres.contains(evt.getKeyChar()+"")){
-        JOptionPane.showMessageDialog(null, "Digite apenas números");
-            evt.consume();
-    }
-
-        int limit = 10;
-         
-        if (textoVendaPapel.getText().length() == limit) {
-            
+        String caracteres = "0987654321";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            JOptionPane.showMessageDialog(null, "Digite apenas números");
             evt.consume();
         }
-            
+
+        int limit = 10;
+
+        if (textoVendaPapel.getText().length() == limit) {
+
+            evt.consume();
+        }
+
     }//GEN-LAST:event_textoVendaPapelKeyTyped
 
     private void textoEstoquePapelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoEstoquePapelKeyTyped
-        
-        String caracteres="0987654321";
-        if(!caracteres.contains(evt.getKeyChar()+"")){
-        JOptionPane.showMessageDialog(null, "Digite apenas números");
-            evt.consume();
-    }
 
-        int limit = 8;
-         
-        if (textoEstoquePapel.getText().length() == limit) {
-            
+        String caracteres = "0987654321";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            JOptionPane.showMessageDialog(null, "Digite apenas números");
             evt.consume();
         }
-            
-            
+
+        int limit = 8;
+
+        if (textoEstoquePapel.getText().length() == limit) {
+
+            evt.consume();
+        }
+
+
     }//GEN-LAST:event_textoEstoquePapelKeyTyped
+
+    private void textoFabricantePapelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoFabricantePapelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textoFabricantePapelActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -313,18 +331,17 @@ public class FramePapel extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     public Papel getPapel() throws Exceptions {
-        
 
-        if (textoCodPapel.getText().trim().isEmpty() || textoEstoquePapel.getText().trim().isEmpty()|| textoVendaPapel.getText().trim().isEmpty()){
-            
-            try {   
-                    logs.escreverLog("Erro ao cadastrar Papel!"); 
-                } catch (IOException ex) {
-                    logs.exceptionLog(ex); 
-                }
-            throw new Exceptions ("Preencha todos os campos corretamente!");
+        if (textoCodPapel.getText().trim().isEmpty() || textoEstoquePapel.getText().trim().isEmpty() || textoVendaPapel.getText().trim().isEmpty()) {
+
+            try {
+                logs.escreverLog("Erro ao cadastrar Papel!");
+            } catch (IOException ex) {
+                logs.exceptionLog(ex);
+            }
+            throw new Exceptions("Preencha todos os campos corretamente!");
         }
-        
+
         String valor = textoVendaPapel.getText().replaceAll("[.-]", "");
         pap.setTextoCodpapel(textoCodPapel.getText());
         pap.setTextoEstoquepapel(textoEstoquePapel.getText());
@@ -333,7 +350,7 @@ public class FramePapel extends javax.swing.JInternalFrame {
         pap.setTextoFormatopapel((String) textoFormatoPapel.getSelectedItem());
         pap.setTextoGramaturapapel((String) textoGramaturaPapel.getSelectedItem());
         pap.setTextoVendaPapel(valor);
-        
+
         return pap;
     }
 

@@ -7,12 +7,14 @@ package banco;
 
 import exception.Exceptions;
 import gets_sets.Papel;
+import janelas.FramePapel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 /**
  *
@@ -20,7 +22,29 @@ import java.util.List;
  */
 public class PapelDAO {
 
-    
+
+
+    public Vector carregaComboBox() {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        Vector vetor = new Vector();
+        try {
+            conn = Conexao.getConnection();
+            String sql = "select nome from fornecedor order by nome";
+            ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                vetor.add(rs.getString("nome"));
+            }
+            rs.close();
+            conn.close();
+        } catch (Exception e) {
+
+        }
+
+        return vetor;
+    }
+
     public String verificaCodigo(String codigo) throws Exceptions {
 
         Connection conn = null;
@@ -56,7 +80,7 @@ public class PapelDAO {
         }
         return null;
     }
-    
+
     public List<Papel> getAll() throws Exceptions {
         List<Papel> lista = new ArrayList<Papel>();
         Connection conn = null;
