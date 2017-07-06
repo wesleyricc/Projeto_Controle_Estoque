@@ -223,16 +223,29 @@ public class PapelDAO {
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "select cod_prod from papel";
+            String sql = "select tipo, cod_prod, fabricante, gramatura, formato, valor, estoque from papel";
             ps = conn.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 
-                String cod_prod = rs.getString(1);
+                String tipo = rs.getString(1);
+                String cod_prod = rs.getString(2);
+                String fabricante = rs.getString(3);
+                String gramatura = rs.getString(4);
+                String formato = rs.getString(5);
+                String valor = rs.getString(6);
+                String estoque = rs.getString(7);
+                
                 Papel pap = new Papel();
+                pap.setTextoTipopapel(tipo);
                 pap.setTextoCodpapel(cod_prod);
-
+                pap.setTextoFabricantepapel(fabricante);
+                pap.setTextoGramaturapapel(gramatura);
+                pap.setTextoFormatopapel(formato);
+                pap.setTextoVendaPapel(valor);
+                pap.setTextoEstoquepapel(estoque);
+                
                 lista.add(pap);
             }
         } catch (SQLException e) {

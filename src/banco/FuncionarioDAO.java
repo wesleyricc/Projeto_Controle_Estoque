@@ -105,7 +105,8 @@ public class FuncionarioDAO {
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "select nome, funcao, sexo, endereco, telefone, email, cpf from funcionario where cpf = ?";
+            String sql = "select nome, funcao, cpf, endereco, telefone, sexo, email from funcionario where cpf = ?";
+                              
             ps = conn.prepareStatement(sql);
             ps.setString(1, cpf);
             ResultSet rs = ps.executeQuery();
@@ -113,11 +114,11 @@ public class FuncionarioDAO {
 
                 String nome = rs.getString(1);
                 String funcao = rs.getString(2);
-                String sexo = rs.getString(3);
+                String CPF = rs.getString(3);
                 String endereco = rs.getString(4);
                 String telefone = rs.getString(5);
-                String email = rs.getString(6);
-                String CPF = rs.getString(7);
+                String sexo = rs.getString(6);
+                String email = rs.getString(7);
                 
                 Funcionario func = new Funcionario();
                 func.setTextoNomeFunc(nome);
@@ -126,7 +127,7 @@ public class FuncionarioDAO {
                 func.setTextoTelefoneFunc(telefone);
                 func.setTextoEnderecoFunc(endereco);
                 func.setTextoEmailFunc(email);
-                func.setTextoCPFFunc(telefone);
+                func.setTextoCPFFunc(CPF);
   
                 return func;
             }

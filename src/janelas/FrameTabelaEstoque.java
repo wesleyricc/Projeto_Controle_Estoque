@@ -25,7 +25,7 @@ public class FrameTabelaEstoque extends javax.swing.JInternalFrame {
      * Creates new form FrameTabelaEstoque
      */
     private TabelaEstoqueActionListener tabelaestoque = new TabelaEstoqueActionListener(this);
-    private final String[] columnNames = {"Código", "Tipo", "Fabricante", "Gramatura", "Formato", "Valor", "Máximo em Estoque"};
+    private final String[] columnNames = {"Código", "Tipo", "Fabricante", "Gramatura", "Formato", "Estoque", "Valor"};
     private DefaultTableModel model = new DefaultTableModel() {
         private static final long serialVersionUID = 1L;
 

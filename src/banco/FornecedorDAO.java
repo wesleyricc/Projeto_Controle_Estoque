@@ -168,7 +168,7 @@ public class FornecedorDAO {
     }
     
 
-    public List<Fornecedor> getAll() throws Exceptions {
+    /*public List<Fornecedor> getAll() throws Exceptions {
         List<Fornecedor> lista = new ArrayList<Fornecedor>();
         Connection conn = null;
         PreparedStatement ps = null;
@@ -205,7 +205,7 @@ public class FornecedorDAO {
             }
         }
         return lista;
-    }
+    }*/
 
     public String verificaCNPJ(String cnpj) throws Exceptions {
 
