@@ -7,14 +7,11 @@ package actionListener;
 
 import actionListener.Log;
 import banco.PapelDAO;
-import exception.Exceptions;
 import gets_sets.Papel;
 import janelas.FramePapel;
 import janelas.FrameTabelaEstoque;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *

@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import static org.hsqldb.HsqlDateTime.e;
 
 public class PapelActionListener implements ActionListener {
 
@@ -66,10 +65,22 @@ public class PapelActionListener implements ActionListener {
                     }
                     if (cont == 1) {
                         cont = 0;
+                        JOptionPane.showMessageDialog(null, "Papel cadastrado com sucesso");
                         papelDAO.update(pap);
                     }
 
                 }
+                else{
+                    try {
+                        logs.escreverLog("Salvou o cadastro de Papel!");
+                    } catch (IOException ex) {
+                        logs.exceptionLog(ex);
+                        //Logger.getLogger(FornecedorActionListener.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(null, "Papel cadastrado com sucesso");
+                    papelDAO.insert(pap);
+                }
+                
             } catch (Exceptions ex) {
                 Logger.getLogger(FramePapel.class.getName()).log(Level.SEVERE, null, ex);
             }

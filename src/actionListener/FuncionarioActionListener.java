@@ -67,9 +67,19 @@ public class FuncionarioActionListener implements ActionListener {
                     }
                     if (cont == 1) {
                         cont = 0;
+                        JOptionPane.showMessageDialog(null, "Funcionario cadastrado com sucesso");
                         funcDAO.update(func);
                     }
 
+                }else{
+                    try {
+                        logs.escreverLog("Salvou o cadastro de Fornecedores!");
+                    } catch (IOException ex) {
+                        logs.exceptionLog(ex);
+                        //Logger.getLogger(FornecedorActionListener.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(null, "Fornecedor cadastrado com sucesso");
+                    funcDAO.insert(func);
                 }
             } catch (Exceptions ex) {
                 Logger.getLogger(FrameFuncionario.class.getName()).log(Level.SEVERE, null, ex);
