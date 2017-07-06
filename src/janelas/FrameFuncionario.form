@@ -21,47 +21,54 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="cadFuncao" min="-2" max="-2" attributes="0"/>
-                              <Component id="cadCPFFunc" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="cadEnderecoFunc" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="cadFuncao" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cadCPFFunc" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cadEnderecoFunc" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                  <Component id="cadNomeFunc" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="cadEmailFunc" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cadSexoFunc" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cadTelefoneFunc" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                          <Component id="cadNomeFunc" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="cadEmailFunc" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="cadSexoFunc" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="cadTelefoneFunc" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="textoEnderecoFunc" min="-2" pref="347" max="-2" attributes="0"/>
+                          <Component id="textoFuncaoFunc" min="-2" pref="347" max="-2" attributes="0"/>
+                          <Component id="textoNomeFunc" min="-2" pref="347" max="-2" attributes="0"/>
+                          <Component id="textoEmailFunc" alignment="0" min="-2" pref="347" max="-2" attributes="0"/>
+                          <Component id="textoCPFFunc" alignment="0" min="-2" pref="113" max="-2" attributes="0"/>
+                          <Component id="textoTelefoneFunc" alignment="0" min="-2" pref="113" max="-2" attributes="0"/>
+                          <Component id="textoSexoFunc" alignment="0" min="-2" pref="89" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
                       <Component id="botaoSalvar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                       <Component id="botaoLimpar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="botaoExcluir" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Component id="botaoCancelar" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="textoEnderecoFunc" min="-2" pref="347" max="-2" attributes="0"/>
-                  <Component id="textoFuncaoFunc" min="-2" pref="347" max="-2" attributes="0"/>
-                  <Component id="textoNomeFunc" min="-2" pref="347" max="-2" attributes="0"/>
-                  <Component id="textoEmailFunc" alignment="0" min="-2" pref="347" max="-2" attributes="0"/>
-                  <Component id="textoCPFFunc" alignment="0" min="-2" pref="113" max="-2" attributes="0"/>
-                  <Component id="textoTelefoneFunc" alignment="0" min="-2" pref="113" max="-2" attributes="0"/>
-                  <Component id="textoSexoFunc" alignment="0" min="-2" pref="89" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="61" max="32767" attributes="0"/>
+              <EmptySpace pref="56" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -103,18 +110,26 @@
                   <Component id="cadSexoFunc" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="textoSexoFunc" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="textoEmailFunc" min="-2" max="-2" attributes="0"/>
-                  <Component id="cadEmailFunc" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="textoEmailFunc" min="-2" max="-2" attributes="0"/>
+                          <Component id="cadEmailFunc" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="79" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="botaoCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="botaoExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="botaoLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="botaoSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="botaoSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="botaoLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="botaoCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="33" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -239,6 +254,11 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="botaoExcluir">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Excluir"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

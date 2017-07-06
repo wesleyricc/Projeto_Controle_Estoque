@@ -3,6 +3,7 @@ package janelas;
 import exception.Exceptions;
 import actionListener.FuncionarioActionListener;
 import actionListener.Log;
+import banco.FuncionarioDAO;
 import gets_sets.Funcionario;
 import gets_sets.Login;
 import java.awt.Dimension;
@@ -12,6 +13,7 @@ import javax.swing.JOptionPane;
 
 public class FrameFuncionario extends javax.swing.JInternalFrame {
 
+    private FuncionarioDAO funcDAO = new FuncionarioDAO();
     private FuncionarioActionListener funcionario = new FuncionarioActionListener(this);
     private Funcionario f = new Funcionario();
     private String user;
@@ -24,6 +26,7 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
         initComponents();
 
         botaoSalvar.addActionListener(funcionario);
+        botaoExcluir.addActionListener(funcionario);
         botaoCancelar.addActionListener(funcionario);
         botaoLimpar.addActionListener(funcionario);
 
@@ -50,6 +53,7 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
         textoTelefoneFunc = new javax.swing.JFormattedTextField();
         textoCPFFunc = new javax.swing.JFormattedTextField();
         textoSexoFunc = new javax.swing.JComboBox<>();
+        botaoExcluir = new javax.swing.JButton();
 
         textoEnderecoFunc.setToolTipText("Exemplo: Rua São José");
         textoEnderecoFunc.addActionListener(new java.awt.event.ActionListener() {
@@ -152,44 +156,51 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
 
         textoSexoFunc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino" }));
 
+        botaoExcluir.setText("Excluir");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGap(42, 42, 42)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(cadFuncao)
-                                .addComponent(cadCPFFunc)
-                                .addComponent(cadEnderecoFunc)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(20, 20, 20)
-                            .addComponent(cadNomeFunc)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cadEmailFunc, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cadSexoFunc, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cadTelefoneFunc, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGap(42, 42, 42)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(cadFuncao)
+                                        .addComponent(cadCPFFunc)
+                                        .addComponent(cadEnderecoFunc)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(20, 20, 20)
+                                    .addComponent(cadNomeFunc)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cadEmailFunc, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(cadSexoFunc, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(cadTelefoneFunc, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textoEnderecoFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textoFuncaoFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textoNomeFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textoEmailFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textoCPFFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textoTelefoneFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textoSexoFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(83, 83, 83)
                         .addComponent(botaoSalvar)
-                        .addGap(35, 35, 35)
+                        .addGap(42, 42, 42)
                         .addComponent(botaoLimpar)
-                        .addGap(30, 30, 30)
-                        .addComponent(botaoCancelar))
-                    .addComponent(textoEnderecoFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textoFuncaoFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textoNomeFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textoEmailFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textoCPFFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textoTelefoneFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textoSexoFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(61, Short.MAX_VALUE))
+                        .addGap(38, 38, 38)
+                        .addComponent(botaoExcluir)
+                        .addGap(31, 31, 31)
+                        .addComponent(botaoCancelar)))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,16 +232,21 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cadSexoFunc)
                     .addComponent(textoSexoFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(textoEmailFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cadEmailFunc))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botaoSalvar)
-                    .addComponent(botaoLimpar)
-                    .addComponent(botaoCancelar))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(textoEmailFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cadEmailFunc))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(botaoCancelar)
+                            .addComponent(botaoExcluir)
+                            .addComponent(botaoLimpar)
+                            .addComponent(botaoSalvar))
+                        .addGap(31, 31, 31))))
         );
 
         pack();
@@ -321,6 +337,7 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoCancelar;
+    private javax.swing.JButton botaoExcluir;
     private javax.swing.JButton botaoLimpar;
     private javax.swing.JButton botaoSalvar;
     private javax.swing.JLabel cadCPFFunc;
@@ -369,6 +386,18 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
         f.setTextoTelefoneFunc(Tel);
 
         return f;
+    }
+    
+    
+    public void editarFuncionario(Funcionario func){
+        textoEmailFunc.setText(func.getTextoEmailFunc());
+        textoCPFFunc.setText(func.getTextoEmailFunc());
+        textoEnderecoFunc.setText(func.getTextoEnderecoFunc());
+        textoFuncaoFunc.setText(func.getTextoFuncaoFunc());
+        textoNomeFunc.setText(func.getTextoNomeFunc());
+        textoTelefoneFunc.setText(func.getTextoTelefoneFunc());
+        // falta o sexo
+        //TextoSexoFunc.setText
     }
 
     public void LimparFuncionario() {

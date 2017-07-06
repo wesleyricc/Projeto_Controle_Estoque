@@ -78,10 +78,19 @@ public class FornecedorActionListener implements ActionListener {
             }
 
             try {
+                logs.escreverLog("Inseriu Fornecedor no banco!");
+                } catch (IOException ex) {
+                    logs.exceptionLog(ex); 
+                }
+            
+            try {
                 fornDAO.insert(f);
             } catch (Exceptions ex) {
                 Logger.getLogger(FornecedorActionListener.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+            
+            JOptionPane.showMessageDialog(ffornecedor, "Cadastro salvo com sucesso!");
 
         }
 
@@ -109,6 +118,12 @@ public class FornecedorActionListener implements ActionListener {
         
         if (e.getActionCommand().equals("Excluir")) {
 
+            try {
+                logs.escreverLog("Excluiu o cadastro de Fornecedores!");
+                } catch (IOException ex) {
+                    logs.exceptionLog(ex); 
+                }
+            
             if(cont == 1){
                 cont = 0;
                 try {
@@ -121,7 +136,8 @@ public class FornecedorActionListener implements ActionListener {
             }else{
                 JOptionPane.showMessageDialog(null, "Fornecedor não cadastrado no banco de dados!");
             }
-                       
+               
+            ffornecedor.LimparFornecedor();
         }
         
         

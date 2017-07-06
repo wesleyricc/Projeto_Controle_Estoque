@@ -23,7 +23,100 @@ import java.util.Vector;
 public class PapelDAO {
 
 
+    
 
+    public void delete(Papel pap) throws Exceptions {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = Conexao.getConnection();
+            String sql = "delete from papel where textoCodPapel = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, pap.getTextoCodpapel());
+            ps.execute();
+
+            conn.commit();
+        } catch(SQLException e) {
+            System.out.println("ERRO: " + e.getMessage());
+
+            if(conn != null){
+                try {
+                    conn.rollback();
+                } catch (SQLException ex) {
+                    System.out.println("ERRO: " + ex.getMessage());
+                }
+            }
+
+
+        } finally {
+            if( ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println("ERRO: " + ex.getMessage());
+                }
+            }
+            if(conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    System.out.println("ERRO: " + ex.getMessage());
+                }
+            }
+        }
+    }
+    
+     public Papel getPapel(String codigo) throws Exceptions {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = Conexao.getConnection();
+            String sql = "select tipo, fabricante, gramatura, formato, valor, estoque, cod_prod from papel where cod_prod = ?";
+            ps = conn.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                String tipo = rs.getString(1);
+                String cod_prod = rs.getString(2);
+                String fabricante = rs.getString(3);
+                String gramatura = rs.getString(4);
+                String formato = rs.getString(5);
+                String valor = rs.getString(6);
+                String estoque = rs.getString(7);
+
+                Papel pap = new Papel();
+                pap.setTextoTipopapel(tipo);
+                pap.setTextoCodpapel(cod_prod);
+                pap.setTextoFabricantepapel(fabricante);
+                pap.setTextoGramaturapapel(gramatura);
+                pap.setTextoFormatopapel(formato);
+                pap.setTextoVendaPapel(valor);
+                pap.setTextoEstoquepapel(estoque);
+
+                return pap;
+            }
+        } catch(SQLException e) {
+            System.out.println("ERRO: " + e.getMessage());
+        } finally {
+            if( ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println("ERRO: " + ex.getMessage());
+                }
+            }
+            if(conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    System.out.println("ERRO: " + ex.getMessage());
+                }
+            }
+        }
+        return null;
+    }
+    
     public Vector carregaComboBox() {
         Connection conn = null;
         PreparedStatement ps = null;
@@ -81,36 +174,71 @@ public class PapelDAO {
         return null;
     }
 
+    public void update(Papel pap) throws Exceptions {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = Conexao.getConnection(); 
+            String sql = "update papel set tipo = ?, fabricante = ?, gramatura = ?, formato = ?, estoque = ?, valor = ?, cod_prod = ? where cod_prod = ?";
+            ps = conn.prepareStatement(sql);
+
+            ps.setString(1, pap.getTextoTipopapel());
+            ps.setString(2, pap.getTextoFabricantepapel());
+            ps.setString(3, pap.getTextoGramaturapapel());
+            ps.setString(4, pap.getTextoFormatopapel());
+            ps.setString(5, pap.getTextoEstoquepapel());
+            ps.setString(6, pap.getTextoVendaPapel());
+            ps.setString(7, pap.getTextoCodpapel());
+
+            ps.execute();
+
+            conn.commit();
+        } catch (SQLException e) {
+            System.out.println("ERRO: " + e.getMessage());
+
+            if (conn != null) {
+                try {
+                    conn.rollback();
+                } catch (SQLException ex) {
+                    System.out.println("ERRO: " + ex.getMessage());
+                }
+            }
+
+        } finally {
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println("ERRO: " + ex.getMessage());
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    System.out.println("ERRO: " + ex.getMessage());
+                }
+            }
+        }
+    }
+    
     public List<Papel> getAll() throws Exceptions {
         List<Papel> lista = new ArrayList<Papel>();
         Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "select tipo, cod_prod, fabricante, gramatura, formato, valor, estoque from papel";
+            String sql = "select cod_prod from papel";
             ps = conn.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 
-                String tipo = rs.getString(1);
-                String cod_prod = rs.getString(2);
-                String fabricante = rs.getString(3);
-                String gramatura = rs.getString(4);
-                String formato = rs.getString(5);
-                String valor = rs.getString(6);
-                String estoque = rs.getString(7);
+                String cod_prod = rs.getString(1);
+                Papel pap = new Papel();
+                pap.setTextoCodpapel(cod_prod);
 
-                Papel p = new Papel();
-                p.setTextoTipopapel(tipo);
-                p.setTextoCodpapel(cod_prod);
-                p.setTextoFabricantepapel(fabricante);
-                p.setTextoGramaturapapel(gramatura);
-                p.setTextoFormatopapel(formato);
-                p.setTextoVendaPapel(valor);
-                p.setTextoEstoquepapel(estoque);
-
-                lista.add(p);
+                lista.add(pap);
             }
         } catch (SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
@@ -133,6 +261,8 @@ public class PapelDAO {
         return lista;
     }
 
+    
+    
     public void insert(Papel papel) throws Exceptions {
         Connection conn = null;
         PreparedStatement ps = null;

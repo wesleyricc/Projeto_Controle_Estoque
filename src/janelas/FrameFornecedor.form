@@ -19,30 +19,25 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="cadRazaoFornecedor" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="cadNomeFornecedor" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cadCPFFornecedor" alignment="1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <Component id="cadNomeFornecedor" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="cadCPFFornecedor" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="cadRazaoFornecedor" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="29" pref="29" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="textoRazaoFornecedor" min="-2" pref="339" max="-2" attributes="0"/>
                           <Component id="textoNomeFornecedor" min="-2" pref="339" max="-2" attributes="0"/>
                           <Component id="textoCNPJFornecedor" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="textoEnderecoFornecedor" alignment="0" min="-2" pref="347" max="-2" attributes="0"/>
+                          <Component id="textoTelefoneFornecedor" alignment="0" min="-2" pref="113" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -50,9 +45,8 @@
                               <Component id="botaoLimpar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                               <Component id="botaoExcluir" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                               <Component id="botaoCancelar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
@@ -68,25 +62,13 @@
                                       <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="textoTelefoneFornecedor" min="-2" pref="113" max="-2" attributes="0"/>
-                                          <Component id="textoEmailFornecedor" min="-2" pref="347" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="0" pref="4" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="textoEnderecoFornecedor" min="-2" pref="347" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <EmptySpace pref="31" max="32767" attributes="0"/>
+                              <Component id="textoEmailFornecedor" min="-2" pref="347" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="18" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -123,7 +105,7 @@
                   <Component id="textoEmailFornecedor" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cadEmailFornecedor" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="60" max="32767" attributes="0"/>
+              <EmptySpace pref="64" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="botaoSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="botaoLimpar" alignment="3" min="-2" max="-2" attributes="0"/>

@@ -5,8 +5,10 @@
  */
 package banco;
 
+import actionListener.Log;
 import exception.Exceptions;
 import gets_sets.Fornecedor;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,6 +22,7 @@ import java.util.List;
  */
 public class FornecedorDAO {
 
+    Log logs = new Log();
     
     public void delete(Fornecedor f) throws Exceptions {
         Connection conn = null;
@@ -60,6 +63,13 @@ public class FornecedorDAO {
                 }
             }
         }
+        /*
+        try {
+                logs.escreverLog("Erro ao deletar fornecedor!");
+                } catch (IOException ex) {
+                    logs.exceptionLog(ex); 
+                }
+        */
     }
     
     public void update(Fornecedor f) throws Exceptions {
@@ -76,7 +86,6 @@ public class FornecedorDAO {
             ps.setString(4, f.getTextoTelefoneFornecedor());
             ps.setString(5, f.getTextoEmailFornecedor());
             ps.setString(6, f.getTextoCNPJFornecedor());
-            ps.setString(7, f.getTextoCNPJFornecedor());
 
             ps.execute();
 

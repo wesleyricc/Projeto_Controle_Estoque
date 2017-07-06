@@ -17,9 +17,10 @@ import javax.swing.JOptionPane;
 public class FuncionarioActionListener implements ActionListener {
 
     private FrameFuncionario ffuncionario;
-    private Funcionario f;
+    private Funcionario func;
     Log logs = new Log();
     FuncionarioDAO funcDAO = new FuncionarioDAO();
+    int cont = 0;
     
     
     public FuncionarioActionListener(FrameFuncionario funcionario){
@@ -32,27 +33,72 @@ public class FuncionarioActionListener implements ActionListener {
         if (e.getActionCommand().equals("Salvar")) {
 
             try {
-                f = ffuncionario.getFuncionario();  
+                func = ffuncionario.getFuncionario();  
             } catch (Exceptions ex){       
                 logs.exceptionLog(ex); 
                 JOptionPane.showMessageDialog(null, ex.getMessage());
-            
-               
             }
-                try {   
-                    logs.escreverLog("Salvou o cadastro de Funcionários!"); 
+            
+           String CPF = func.getTextoCPFFunc();
+
+            try {
+                if (CPF.equals(funcDAO.verificaCPF(CPF))) {
+
+                    if (cont == 0) {
+                        cont = 1;
+                        int n = JOptionPane.showConfirmDialog(null, "CPF já cadastrado. Deseja editar?");
+                        if (n == 0) {
+
+                            Funcionario func = funcDAO.getFuncionario(CPF);
+
+                            ffuncionario.editarFuncionario(func);
+
+                            ffuncionario.setVisible(true);
+                            return;
+                        }
+                        if (n == 1) {
+                            return;
+                        } else {
+                            ffuncionario.LimparFuncionario();
+                            ffuncionario.dispose();
+                            return;
+
+                        }
+                    }
+                    if (cont == 1) {
+                        cont = 0;
+                        funcDAO.update(func);
+                    }
+
+                }
+            } catch (Exceptions ex) {
+                Logger.getLogger(FrameFuncionario.class.getName()).log(Level.SEVERE, null, ex);
+                
+            }
+
+            String msg = "Cadastrou um fornecedor!";
+
+            try {
+                logs.escreverLog("Salvou o cadastro de Fornecedores!");
+            } catch (IOException ex) {
+                logs.exceptionLog(ex);
+            }
+            
+            try {
+                logs.escreverLog("Inseriu Funcionário no banco!");
                 } catch (IOException ex) {
                     logs.exceptionLog(ex); 
                 }
-                
+
             try {
-                funcDAO.insert(f);
+                funcDAO.insert(func);
             } catch (Exceptions ex) {
                 Logger.getLogger(FuncionarioActionListener.class.getName()).log(Level.SEVERE, null, ex);
             }
-                
+
+            JOptionPane.showMessageDialog(ffuncionario, "Cadastro salvo com sucesso!");
+            
         }
-        
         if(e.getActionCommand().equals("Limpar")){
             ffuncionario.LimparFuncionario();
             
@@ -75,6 +121,31 @@ public class FuncionarioActionListener implements ActionListener {
             ffuncionario.LimparFuncionario();
             ffuncionario.dispose();
         }
-          
+         
+        if (e.getActionCommand().equals("Excluir")) {
+
+            try {
+                logs.escreverLog("Excluiu o cadastro de Funcionário!");
+                } catch (IOException ex) {
+                    logs.exceptionLog(ex); 
+                }
+            
+            if(cont == 1){
+                cont = 0;
+                try {
+                    funcDAO.delete(func);
+                    JOptionPane.showMessageDialog(null, "Excluido com sucesso do banco de dados!");
+                } catch (Exceptions ex) {
+                    Logger.getLogger(FuncionarioActionListener.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            }else{
+                JOptionPane.showMessageDialog(null, "Funcionario não cadastrado no banco de dados!");
+            }
+                 
+            ffuncionario.LimparFuncionario();
+            
+        }
+        
     }   
 }

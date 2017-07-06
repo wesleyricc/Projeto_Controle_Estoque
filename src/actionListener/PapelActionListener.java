@@ -16,10 +16,11 @@ import static org.hsqldb.HsqlDateTime.e;
 public class PapelActionListener implements ActionListener {
 
     private FramePapel fpapel;
-    private Papel p;
+    private Papel pap;
     private FrameTabelaEstoque ftabela = new FrameTabelaEstoque();
-    Log logs = new Log();
+    private final Log logs = new Log();
     PapelDAO papelDAO = new PapelDAO();
+    int cont = 0;
 
     public PapelActionListener(FramePapel papel) {
 
@@ -33,11 +34,47 @@ public class PapelActionListener implements ActionListener {
         if (e.getActionCommand().equals("Salvar")) {
 
             try {
-                p = fpapel.getPapel();
+                pap = fpapel.getPapel();
             } catch (Exceptions ex) {
                 logs.exceptionLog(ex);
                 JOptionPane.showMessageDialog(null, ex.getMessage());
             }
+                String codigo = pap.getTextoCodpapel();
+            try {
+                if (codigo.equals(papelDAO.verificaCodigo(codigo))) {
+
+                    if (cont == 0) {
+                        cont = 1;
+                        int n = JOptionPane.showConfirmDialog(null, "Código já cadastrado. Deseja editar?");
+                        if (n == 0) {
+
+                            Papel pap = papelDAO.getPapel(codigo);
+
+                            fpapel.editarPapel(pap);
+
+                            fpapel.setVisible(true);
+                            return;
+                        }
+                        if (n == 1) {
+                            return;
+                        } else {
+                            fpapel.LimparPapel();
+                            fpapel.dispose();
+                            return;
+
+                        }
+                    }
+                    if (cont == 1) {
+                        cont = 0;
+                        papelDAO.update(pap);
+                    }
+
+                }
+            } catch (Exceptions ex) {
+                Logger.getLogger(FramePapel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            String msg = "Cadastrou um papel!";
 
             try {
                 logs.escreverLog("Salvou o cadastro de Papel!");
@@ -46,13 +83,21 @@ public class PapelActionListener implements ActionListener {
             }
 
             try {
-                papelDAO.insert(p);
-                ftabela.attTabela();
+                logs.escreverLog("Inseriu Papel no banco!");
+                } catch (IOException ex) {
+                    logs.exceptionLog(ex); 
+                }
+            
+            try {
+                papelDAO.insert(pap);
             } catch (Exceptions ex) {
                 Logger.getLogger(PapelActionListener.class.getName()).log(Level.SEVERE, null, ex);
             }
 
+            JOptionPane.showMessageDialog(fpapel, "Cadastro salvo com sucesso!");
+            
         }
+
 
         if (e.getActionCommand().equals("Limpar")) {
 
@@ -77,5 +122,30 @@ public class PapelActionListener implements ActionListener {
             }
         }
 
+        if (e.getActionCommand().equals("Excluir")) {
+
+            try {
+                logs.escreverLog("Excluiu o cadastro de Papel!");
+                } catch (IOException ex) {
+                    logs.exceptionLog(ex); 
+                }
+            
+            if(cont == 1){
+                cont = 0;
+                try {
+                    papelDAO.delete(pap);
+                    JOptionPane.showMessageDialog(null, "Excluido com sucesso do banco de dados!");
+                } catch (Exceptions ex) {
+                    Logger.getLogger(PapelActionListener.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            }else{
+                JOptionPane.showMessageDialog(null, "Papel não cadastrado no banco de dados!");
+            }
+               
+            fpapel.LimparPapel();
+        }
+        
+        
     }
 }
