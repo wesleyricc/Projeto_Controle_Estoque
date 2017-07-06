@@ -165,7 +165,9 @@ public class FramePapel extends javax.swing.JInternalFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(cadTipoPapel)
-                                            .addComponent(cadCodPapel))
+                                            .addComponent(cadCodPapel)
+                                            .addComponent(cadFabricantePapel)
+                                            .addComponent(cadGramaturaPapel))
                                         .addGap(29, 29, 29))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(cadVendaPapel)
@@ -177,24 +179,18 @@ public class FramePapel extends javax.swing.JInternalFrame {
                             .addComponent(textoEstoquePapel, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(textoCodPapel, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(textoTipoPapel, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textoVendaPapel, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(textoVendaPapel, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textoFabricantePapel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(cadGramaturaPapel)
-                                    .addComponent(cadFabricantePapel))
-                                .addGap(32, 32, 32)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(textoGramaturaPapel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(48, 48, 48)
-                                        .addComponent(cadFormatoPapel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(textoFormatoPapel, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(textoFabricantePapel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(108, 108, 108))
+                                .addGap(104, 104, 104)
+                                .addComponent(textoGramaturaPapel, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cadFormatoPapel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(textoFormatoPapel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(botaoSalvar)
                                 .addGap(26, 26, 26)
@@ -378,12 +374,11 @@ public class FramePapel extends javax.swing.JInternalFrame {
         textoCodPapel.setText(pap.getTextoCodpapel());
         textoEstoquePapel.setText(pap.getTextoEstoquepapel());     
         textoVendaPapel.setText(pap.getTextoVendaPapel());
-        // falta o tipo, fabricante, formato e gramatura
         
-        //textoFabricantePapel.setText
-        //textoTipoPapel.setText
-        //textoFormatoPapel.setText
-        //textoGramaturaPapel.setText
+        textoFabricantePapel.setSelectedIndex(0);
+        textoTipoPapel.setSelectedIndex(0);
+        textoFormatoPapel.setSelectedIndex(0);
+        textoGramaturaPapel.setSelectedIndex(0);
     }
     
     public void LimparPapel() {

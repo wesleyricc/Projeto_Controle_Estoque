@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 public class PapelActionListener implements ActionListener {
 
     private FramePapel fpapel;
-    private Papel pap;
+    private Papel p;
     private FrameTabelaEstoque ftabela = new FrameTabelaEstoque();
     private final Log logs = new Log();
     PapelDAO papelDAO = new PapelDAO();
@@ -33,12 +33,12 @@ public class PapelActionListener implements ActionListener {
         if (e.getActionCommand().equals("Salvar")) {
 
             try {
-                pap = fpapel.getPapel();
+                p = fpapel.getPapel();
             } catch (Exceptions ex) {
                 logs.exceptionLog(ex);
                 JOptionPane.showMessageDialog(null, ex.getMessage());
             }
-                String codigo = pap.getTextoCodpapel();
+                String codigo = p.getTextoCodpapel();
             try {
                 if (codigo.equals(papelDAO.verificaCodigo(codigo))) {
 
@@ -47,9 +47,9 @@ public class PapelActionListener implements ActionListener {
                         int n = JOptionPane.showConfirmDialog(null, "Código já cadastrado. Deseja editar?");
                         if (n == 0) {
 
-                            Papel pap = papelDAO.getPapel(codigo);
+                            Papel p = papelDAO.getPapel(codigo);
 
-                            fpapel.editarPapel(pap);
+                            fpapel.editarPapel(p);
 
                             fpapel.setVisible(true);
                             return;
@@ -66,7 +66,7 @@ public class PapelActionListener implements ActionListener {
                     if (cont == 1) {
                         cont = 0;
                         JOptionPane.showMessageDialog(null, "Papel cadastrado com sucesso");
-                        papelDAO.update(pap);
+                        papelDAO.update(p);
                     }
 
                 }
@@ -78,7 +78,7 @@ public class PapelActionListener implements ActionListener {
                         //Logger.getLogger(FornecedorActionListener.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     JOptionPane.showMessageDialog(null, "Papel cadastrado com sucesso");
-                    papelDAO.insert(pap);
+                    papelDAO.insert(p);
                 }
                 
             } catch (Exceptions ex) {
@@ -86,27 +86,6 @@ public class PapelActionListener implements ActionListener {
             }
 
             String msg = "Cadastrou um papel!";
-
-            try {
-                logs.escreverLog("Salvou o cadastro de Papel!");
-            } catch (IOException ex) {
-                logs.exceptionLog(ex);
-            }
-
-            try {
-                logs.escreverLog("Inseriu Papel no banco!");
-                } catch (IOException ex) {
-                    logs.exceptionLog(ex); 
-                }
-            
-            try {
-                papelDAO.insert(pap);
-            } catch (Exceptions ex) {
-                Logger.getLogger(PapelActionListener.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            JOptionPane.showMessageDialog(fpapel, "Cadastro salvo com sucesso!");
-            
         }
 
 
@@ -144,7 +123,7 @@ public class PapelActionListener implements ActionListener {
             if(cont == 1){
                 cont = 0;
                 try {
-                    papelDAO.delete(pap);
+                    papelDAO.delete(p);
                     JOptionPane.showMessageDialog(null, "Excluido com sucesso do banco de dados!");
                 } catch (Exceptions ex) {
                     Logger.getLogger(PapelActionListener.class.getName()).log(Level.SEVERE, null, ex);

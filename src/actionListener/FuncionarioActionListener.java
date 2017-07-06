@@ -88,26 +88,7 @@ public class FuncionarioActionListener implements ActionListener {
 
             String msg = "Cadastrou um fornecedor!";
 
-            try {
-                logs.escreverLog("Salvou o cadastro de Fornecedores!");
-            } catch (IOException ex) {
-                logs.exceptionLog(ex);
-            }
-            
-            try {
-                logs.escreverLog("Inseriu Funcionário no banco!");
-                } catch (IOException ex) {
-                    logs.exceptionLog(ex); 
-                }
-
-            try {
-                funcDAO.insert(func);
-            } catch (Exceptions ex) {
-                Logger.getLogger(FuncionarioActionListener.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            JOptionPane.showMessageDialog(ffuncionario, "Cadastro salvo com sucesso!");
-            
+           
         }
         if(e.getActionCommand().equals("Limpar")){
             ffuncionario.LimparFuncionario();

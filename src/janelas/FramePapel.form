@@ -31,6 +31,8 @@
                                       <Group type="103" groupAlignment="1" attributes="0">
                                           <Component id="cadTipoPapel" min="-2" max="-2" attributes="0"/>
                                           <Component id="cadCodPapel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cadFabricantePapel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cadGramaturaPapel" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="29" pref="29" max="-2" attributes="0"/>
                                   </Group>
@@ -50,28 +52,19 @@
                           <Component id="textoCodPapel" min="-2" pref="347" max="-2" attributes="0"/>
                           <Component id="textoTipoPapel" min="-2" pref="99" max="-2" attributes="0"/>
                           <Component id="textoVendaPapel" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
+                          <Component id="textoFabricantePapel" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="64" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="cadGramaturaPapel" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cadFabricantePapel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="textoGramaturaPapel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                                      <Component id="cadFormatoPapel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="textoFormatoPapel" min="-2" pref="81" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="textoFabricantePapel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
+                              <Component id="textoGramaturaPapel" min="-2" pref="88" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="cadFormatoPapel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="textoFormatoPapel" min="-2" pref="130" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="botaoSalvar" min="-2" max="-2" attributes="0"/>

@@ -7,7 +7,6 @@ package banco;
 
 import exception.Exceptions;
 import gets_sets.Papel;
-import janelas.FramePapel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,24 +21,21 @@ import java.util.Vector;
  */
 public class PapelDAO {
 
-
-    
-
     public void delete(Papel pap) throws Exceptions {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "delete from papel where textoCodPapel = ?";
+            String sql = "delete from papel where cod_prod = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, pap.getTextoCodpapel());
             ps.execute();
 
             conn.commit();
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
 
-            if(conn != null){
+            if (conn != null) {
                 try {
                     conn.rollback();
                 } catch (SQLException ex) {
@@ -47,16 +43,15 @@ public class PapelDAO {
                 }
             }
 
-
         } finally {
-            if( ps != null) {
+            if (ps != null) {
                 try {
                     ps.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
                 }
             }
-            if(conn != null) {
+            if (conn != null) {
                 try {
                     conn.close();
                 } catch (SQLException ex) {
@@ -65,15 +60,15 @@ public class PapelDAO {
             }
         }
     }
-    
-     public Papel getPapel(String codigo) throws Exceptions {
+
+    public Papel getPapel(String codigo) throws Exceptions {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "select tipo, fabricante, gramatura, formato, valor, estoque, cod_prod from papel where cod_prod = ?";
+            String sql = "select tipo, cod_prod, fabricante, gramatura, formato, valor, estoque from papel where cod_prod = ?";
             ps = conn.prepareStatement(sql);
-
+            ps.setString(1, codigo);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 
@@ -96,17 +91,17 @@ public class PapelDAO {
 
                 return pap;
             }
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
         } finally {
-            if( ps != null) {
+            if (ps != null) {
                 try {
                     ps.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
                 }
             }
-            if(conn != null) {
+            if (conn != null) {
                 try {
                     conn.close();
                 } catch (SQLException ex) {
@@ -116,7 +111,7 @@ public class PapelDAO {
         }
         return null;
     }
-    
+
     public Vector carregaComboBox() {
         Connection conn = null;
         PreparedStatement ps = null;
@@ -144,7 +139,7 @@ public class PapelDAO {
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "select cod_papel from papel where cod_papel = ?";
+            String sql = "select cod_prod from papel where cod_prod = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, codigo);
             ResultSet rs = ps.executeQuery();
@@ -174,21 +169,21 @@ public class PapelDAO {
         return null;
     }
 
-    public void update(Papel pap) throws Exceptions {
+    public void update(Papel p) throws Exceptions {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = Conexao.getConnection(); 
-            String sql = "update papel set tipo = ?, fabricante = ?, gramatura = ?, formato = ?, estoque = ?, valor = ?, cod_prod = ? where cod_prod = ?";
+            conn = Conexao.getConnection();
+            String sql = "update papel set tipo = ?, cod_prod = ?, fabricante = ?, gramatura = ?, formato = ?, valor = ?,  estoque = ? where cod_prod = ?";
             ps = conn.prepareStatement(sql);
 
-            ps.setString(1, pap.getTextoTipopapel());
-            ps.setString(2, pap.getTextoFabricantepapel());
-            ps.setString(3, pap.getTextoGramaturapapel());
-            ps.setString(4, pap.getTextoFormatopapel());
-            ps.setString(5, pap.getTextoEstoquepapel());
-            ps.setString(6, pap.getTextoVendaPapel());
-            ps.setString(7, pap.getTextoCodpapel());
+            ps.setString(1, p.getTextoTipopapel());
+            ps.setString(2, p.getTextoCodpapel());
+            ps.setString(3, p.getTextoFabricantepapel());
+            ps.setString(4, p.getTextoGramaturapapel());
+            ps.setString(5, p.getTextoFormatopapel());
+            ps.setString(6, p.getTextoVendaPapel());
+            ps.setString(7, p.getTextoEstoquepapel());
 
             ps.execute();
 
@@ -221,7 +216,7 @@ public class PapelDAO {
             }
         }
     }
-    
+
     public List<Papel> getAll() throws Exceptions {
         List<Papel> lista = new ArrayList<Papel>();
         Connection conn = null;
@@ -261,8 +256,6 @@ public class PapelDAO {
         return lista;
     }
 
-    
-    
     public void insert(Papel papel) throws Exceptions {
         Connection conn = null;
         PreparedStatement ps = null;
