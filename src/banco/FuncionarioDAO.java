@@ -1,7 +1,6 @@
 package banco;
 
 import exception.Exceptions;
-import gets_sets.Fornecedor;
 import gets_sets.Funcionario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -58,7 +57,7 @@ public class FuncionarioDAO {
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "update funcionario set nome = ?, funcao = ?, sexo = ?, endereco = ?, telefone = ?, email = ?, cpf = ? where cpf = ?";
+            String sql = "update funcionario set nome = ?, funcao = ?, cpf = ?, endereco = ?, telefone = ?, sexo = ?, email = ? where cpf = ?";
             ps = conn.prepareStatement(sql);
 
             ps.setString(1, func.getTextoNomeFunc());
