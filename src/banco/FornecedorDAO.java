@@ -82,7 +82,8 @@ public class FornecedorDAO {
             ps.setString(4, f.getTextoTelefoneFornecedor());
             ps.setString(5, f.getTextoEmailFornecedor());
             ps.setString(6, f.getTextoCNPJFornecedor());
-
+            ps.setString(7, f.getTextoCNPJFornecedor());
+            
             ps.execute();
 
             conn.commit();

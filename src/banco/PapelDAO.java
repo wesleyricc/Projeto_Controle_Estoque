@@ -197,7 +197,8 @@ public class PapelDAO {
             ps.setString(5, p.getTextoFormatopapel());
             ps.setString(6, p.getTextoVendaPapel());
             ps.setString(7, p.getTextoEstoquepapel());
-
+            ps.setString(8, p.getTextoCodpapel());
+            
             ps.execute();
 
             conn.commit();

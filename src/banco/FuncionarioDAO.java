@@ -73,7 +73,8 @@ public class FuncionarioDAO {
             ps.setString(5, func.getTextoTelefoneFunc());
             ps.setString(6, func.getTextoSexoFunc());
             ps.setString(7, func.getTextoEmailFunc());
-
+            ps.setString(8, func.getTextoCPFFunc());
+            
             ps.execute();
 
             conn.commit();
