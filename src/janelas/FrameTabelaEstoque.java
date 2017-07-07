@@ -5,6 +5,7 @@
  */
 package janelas;
 
+import actionListener.Log;
 import actionListener.TabelaEstoqueActionListener;
 import banco.PapelDAO;
 import exception.Exceptions;
@@ -21,6 +22,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FrameTabelaEstoque extends javax.swing.JInternalFrame {
 
+    private final Log logs = new Log();
+    
     /**
      * Creates new form FrameTabelaEstoque
      */
@@ -39,6 +42,7 @@ public class FrameTabelaEstoque extends javax.swing.JInternalFrame {
             attTabela();
         } catch (Exceptions ex) {
             Logger.getLogger(FrameTabelaEstoque.class.getName()).log(Level.SEVERE, null, ex);
+            logs.exceptionLog(ex);
         }
 
         botaoSair.addActionListener(tabelaestoque);

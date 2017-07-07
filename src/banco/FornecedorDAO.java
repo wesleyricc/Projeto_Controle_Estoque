@@ -36,12 +36,14 @@ public class FornecedorDAO {
             conn.commit();
         } catch(SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
+            logs.exceptionLog(e);
 
             if(conn != null){
                 try {
                     conn.rollback();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
 
@@ -52,6 +54,7 @@ public class FornecedorDAO {
                     ps.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
             if(conn != null) {
@@ -59,16 +62,10 @@ public class FornecedorDAO {
                     conn.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
         }
-        /*
-        try {
-                logs.escreverLog("Erro ao deletar fornecedor!");
-                } catch (IOException ex) {
-                    logs.exceptionLog(ex); 
-                }
-        */
     }
     
     public void update(Fornecedor f) throws Exceptions {
@@ -91,12 +88,14 @@ public class FornecedorDAO {
             conn.commit();
         } catch (SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
+            logs.exceptionLog(e);
 
             if (conn != null) {
                 try {
                     conn.rollback();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
 
@@ -106,6 +105,7 @@ public class FornecedorDAO {
                     ps.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
             if (conn != null) {
@@ -113,6 +113,7 @@ public class FornecedorDAO {
                     conn.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
         }
@@ -148,12 +149,14 @@ public class FornecedorDAO {
             }
         } catch(SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
+            logs.exceptionLog(e);
         } finally {
             if( ps != null) {
                 try {
                     ps.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
             if(conn != null) {
@@ -161,6 +164,7 @@ public class FornecedorDAO {
                     conn.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
         }
@@ -188,12 +192,14 @@ public class FornecedorDAO {
             }
         } catch (SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
+            logs.exceptionLog(ex);
         } finally {
             if (ps != null) {
                 try {
                     ps.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
             if (conn != null) {
@@ -201,6 +207,7 @@ public class FornecedorDAO {
                     conn.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
         }
@@ -224,12 +231,14 @@ public class FornecedorDAO {
             }
         } catch (SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
+            logs.exceptionLog(e);
         } finally {
             if (ps != null) {
                 try {
                     ps.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
             if (conn != null) {
@@ -237,6 +246,7 @@ public class FornecedorDAO {
                     conn.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
         }
@@ -266,12 +276,14 @@ public class FornecedorDAO {
 
         } catch (SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
+            logs.exceptionLog(e);
 
             if (conn != null) {
                 try {
                     conn.rollback();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
 
@@ -281,6 +293,7 @@ public class FornecedorDAO {
                     ps.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
             if (conn != null) {
@@ -288,6 +301,7 @@ public class FornecedorDAO {
                     conn.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
         }

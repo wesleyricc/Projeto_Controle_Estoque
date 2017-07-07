@@ -75,7 +75,7 @@ public class PapelActionListener implements ActionListener {
                         logs.escreverLog("Salvou o cadastro de Papel!");
                     } catch (IOException ex) {
                         logs.exceptionLog(ex);
-                        //Logger.getLogger(FornecedorActionListener.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(FornecedorActionListener.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     JOptionPane.showMessageDialog(null, "Papel cadastrado com sucesso");
                     papelDAO.insert(p);
@@ -83,6 +83,7 @@ public class PapelActionListener implements ActionListener {
                 
             } catch (Exceptions ex) {
                 Logger.getLogger(FramePapel.class.getName()).log(Level.SEVERE, null, ex);
+                logs.exceptionLog(ex);
             }
 
             String msg = "Cadastrou um papel!";
@@ -127,6 +128,7 @@ public class PapelActionListener implements ActionListener {
                     JOptionPane.showMessageDialog(null, "Excluido com sucesso do banco de dados!");
                 } catch (Exceptions ex) {
                     Logger.getLogger(PapelActionListener.class.getName()).log(Level.SEVERE, null, ex);
+                    logs.exceptionLog(ex);
                 }
                 
             }else{

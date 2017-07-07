@@ -5,6 +5,7 @@
  */
 package banco;
 
+import actionListener.Log;
 import exception.Exceptions;
 import gets_sets.Papel;
 import java.sql.Connection;
@@ -21,6 +22,8 @@ import java.util.Vector;
  */
 public class PapelDAO {
 
+    Log logs = new Log();
+    
     public void delete(Papel pap) throws Exceptions {
         Connection conn = null;
         PreparedStatement ps = null;
@@ -34,12 +37,14 @@ public class PapelDAO {
             conn.commit();
         } catch (SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
+            logs.exceptionLog(e);
 
             if (conn != null) {
                 try {
                     conn.rollback();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
 
@@ -49,6 +54,7 @@ public class PapelDAO {
                     ps.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
             if (conn != null) {
@@ -56,6 +62,7 @@ public class PapelDAO {
                     conn.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
         }
@@ -93,12 +100,14 @@ public class PapelDAO {
             }
         } catch (SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
+            logs.exceptionLog(e);
         } finally {
             if (ps != null) {
                 try {
                     ps.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
             if (conn != null) {
@@ -106,6 +115,7 @@ public class PapelDAO {
                     conn.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
         }
@@ -127,7 +137,7 @@ public class PapelDAO {
             rs.close();
             conn.close();
         } catch (Exception e) {
-
+          logs.exceptionLog(e);
         }
 
         return vetor;
@@ -150,12 +160,14 @@ public class PapelDAO {
             }
         } catch (SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
+            logs.exceptionLog(e);
         } finally {
             if (ps != null) {
                 try {
                     ps.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
             if (conn != null) {
@@ -163,6 +175,7 @@ public class PapelDAO {
                     conn.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
         }
@@ -190,12 +203,14 @@ public class PapelDAO {
             conn.commit();
         } catch (SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
+            logs.exceptionLog(e);
 
             if (conn != null) {
                 try {
                     conn.rollback();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
 
@@ -205,6 +220,7 @@ public class PapelDAO {
                     ps.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
             if (conn != null) {
@@ -212,6 +228,7 @@ public class PapelDAO {
                     conn.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
         }
@@ -250,12 +267,15 @@ public class PapelDAO {
             }
         } catch (SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
+            logs.exceptionLog(e);
+            
         } finally {
             if (ps != null) {
                 try {
                     ps.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
             if (conn != null) {
@@ -263,6 +283,7 @@ public class PapelDAO {
                     conn.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
         }
@@ -293,12 +314,14 @@ public class PapelDAO {
 
         } catch (SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
+            logs.exceptionLog(e);
 
             if (conn != null) {
                 try {
                     conn.rollback();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
 
@@ -308,6 +331,7 @@ public class PapelDAO {
                     ps.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
             if (conn != null) {
@@ -315,6 +339,7 @@ public class PapelDAO {
                     conn.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
 
