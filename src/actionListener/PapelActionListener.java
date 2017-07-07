@@ -79,6 +79,7 @@ public class PapelActionListener implements ActionListener {
                     }
                     JOptionPane.showMessageDialog(null, "Papel cadastrado com sucesso");
                     papelDAO.insert(p);
+                    
                 }
                 
             } catch (Exceptions ex) {

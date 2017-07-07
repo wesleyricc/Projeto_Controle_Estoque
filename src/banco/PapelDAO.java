@@ -8,6 +8,7 @@ package banco;
 import actionListener.Log;
 import exception.Exceptions;
 import gets_sets.Papel;
+import janelas.FrameTabelaEstoque;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -142,7 +143,7 @@ public class PapelDAO {
 
         return vetor;
     }
-
+         
     public String verificaCodigo(String codigo) throws Exceptions {
 
         Connection conn = null;
@@ -344,6 +345,7 @@ public class PapelDAO {
                 }
             }
 
+            
         }
     }
 }

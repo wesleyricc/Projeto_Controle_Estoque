@@ -52,9 +52,9 @@
                           <Component id="textoFuncaoFunc" min="-2" pref="347" max="-2" attributes="0"/>
                           <Component id="textoNomeFunc" min="-2" pref="347" max="-2" attributes="0"/>
                           <Component id="textoEmailFunc" alignment="0" min="-2" pref="347" max="-2" attributes="0"/>
-                          <Component id="textoCPFFunc" alignment="0" min="-2" pref="113" max="-2" attributes="0"/>
                           <Component id="textoTelefoneFunc" alignment="0" min="-2" pref="113" max="-2" attributes="0"/>
                           <Component id="textoSexoFunc" alignment="0" min="-2" pref="89" max="-2" attributes="0"/>
+                          <Component id="textoCPFFunc" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -86,16 +86,11 @@
                   <Component id="textoFuncaoFunc" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="cadCPFFunc" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="textoCPFFunc" pref="30" max="32767" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="cadCPFFunc" min="-2" max="-2" attributes="0"/>
+                  <Component id="textoCPFFunc" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="cadEnderecoFunc" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="textoEnderecoFunc" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -120,7 +115,7 @@
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="79" max="32767" attributes="0"/>
+                      <EmptySpace pref="83" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="botaoCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="botaoExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
