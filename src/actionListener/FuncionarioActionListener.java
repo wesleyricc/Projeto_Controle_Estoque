@@ -76,14 +76,14 @@ public class FuncionarioActionListener implements ActionListener {
                         logs.escreverLog("Salvou o cadastro de Fornecedores!");
                     } catch (IOException ex) {
                         logs.exceptionLog(ex);
-                        //Logger.getLogger(FornecedorActionListener.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(FornecedorActionListener.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     JOptionPane.showMessageDialog(null, "Fornecedor cadastrado com sucesso");
                     funcDAO.insert(func);
                 }
             } catch (Exceptions ex) {
                 Logger.getLogger(FrameFuncionario.class.getName()).log(Level.SEVERE, null, ex);
-                
+                logs.exceptionLog(ex);
             }
 
             String msg = "Cadastrou um fornecedor!";
@@ -128,6 +128,7 @@ public class FuncionarioActionListener implements ActionListener {
                     JOptionPane.showMessageDialog(null, "Excluido com sucesso do banco de dados!");
                 } catch (Exceptions ex) {
                     Logger.getLogger(FuncionarioActionListener.class.getName()).log(Level.SEVERE, null, ex);
+                    logs.exceptionLog(ex);
                 }
                 
             }else{

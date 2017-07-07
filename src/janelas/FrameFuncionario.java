@@ -18,7 +18,7 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
     private Funcionario f = new Funcionario();
     private String user;
     private String msg;
-    Log logs = new Log();
+    private final Log logs = new Log();
     Login l;
 
     public FrameFuncionario() {

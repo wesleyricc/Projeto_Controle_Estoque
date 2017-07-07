@@ -8,8 +8,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import actionListener.Log;
 
 public class FuncionarioDAO {
+    
+    Log logs = new Log();
 
     public void delete(Funcionario func) throws Exceptions {
         Connection conn = null;
@@ -24,12 +27,13 @@ public class FuncionarioDAO {
             conn.commit();
         } catch(SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
-
+            logs.exceptionLog(e);
             if(conn != null){
                 try {
                     conn.rollback();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
 
@@ -40,6 +44,7 @@ public class FuncionarioDAO {
                     ps.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
             if(conn != null) {
@@ -47,6 +52,7 @@ public class FuncionarioDAO {
                     conn.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
         }
@@ -73,12 +79,14 @@ public class FuncionarioDAO {
             conn.commit();
         } catch (SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
-
+            logs.exceptionLog(e);
+            
             if (conn != null) {
                 try {
                     conn.rollback();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
 
@@ -88,6 +96,7 @@ public class FuncionarioDAO {
                     ps.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
             if (conn != null) {
@@ -95,6 +104,7 @@ public class FuncionarioDAO {
                     conn.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
         }
@@ -139,6 +149,7 @@ public class FuncionarioDAO {
                     ps.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
             if(conn != null) {
@@ -146,6 +157,7 @@ public class FuncionarioDAO {
                     conn.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
         }
@@ -172,12 +184,14 @@ public class FuncionarioDAO {
             }
         } catch (SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
+            logs.exceptionLog(e);
         } finally {
             if (ps != null) {
                 try {
                     ps.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
             if (conn != null) {
@@ -185,6 +199,7 @@ public class FuncionarioDAO {
                     conn.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
         }
@@ -208,12 +223,14 @@ public class FuncionarioDAO {
             }
         } catch (SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
+            logs.exceptionLog(e);
         } finally {
             if (ps != null) {
                 try {
                     ps.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
             if (conn != null) {
@@ -221,6 +238,7 @@ public class FuncionarioDAO {
                     conn.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
         }
@@ -251,12 +269,14 @@ public class FuncionarioDAO {
 
         } catch (SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
-
+            logs.exceptionLog(e);
+            
             if (conn != null) {
                 try {
                     conn.rollback();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
 
@@ -266,6 +286,7 @@ public class FuncionarioDAO {
                     ps.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
             if (conn != null) {
@@ -273,6 +294,7 @@ public class FuncionarioDAO {
                     conn.close();
                 } catch (SQLException ex) {
                     System.out.println("ERRO: " + ex.getMessage());
+                    logs.exceptionLog(ex);
                 }
             }
         }
