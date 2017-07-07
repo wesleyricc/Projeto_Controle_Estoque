@@ -94,7 +94,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="AjNome1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Jos&#xe9; Vitor"/>
+        <Property name="text" type="java.lang.String" value="Jos&#xe9; Vitor Morona Souza"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="AjLogo">

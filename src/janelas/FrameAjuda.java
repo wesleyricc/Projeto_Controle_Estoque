@@ -46,7 +46,7 @@ public class FrameAjuda extends javax.swing.JInternalFrame {
 
         AjNome2.setText("Pedro Henrique Bonetti");
 
-        AjNome1.setText("José Vitor");
+        AjNome1.setText("José Vitor Morona Souza");
 
         AjVersão.setText("Versão 1.0");
 
