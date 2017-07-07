@@ -91,6 +91,11 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         cadPapel.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
         cadPapel.setText("Papel");
+        cadPapel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cadPapelMouseClicked(evt);
+            }
+        });
         cadPapel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cadPapelActionPerformed(evt);
@@ -111,6 +116,11 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         menuConsultar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         menuConsultar.setText("Consultar");
+        menuConsultar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuConsultarMouseClicked(evt);
+            }
+        });
         menuConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuConsultarActionPerformed(evt);
@@ -247,6 +257,15 @@ public class FramePrincipal extends javax.swing.JFrame {
             logs.exceptionLog(ex);
         }
     }//GEN-LAST:event_menuConsultarActionPerformed
+
+    private void menuConsultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuConsultarMouseClicked
+
+    }//GEN-LAST:event_menuConsultarMouseClicked
+
+    private void cadPapelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadPapelMouseClicked
+        
+
+    }//GEN-LAST:event_cadPapelMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

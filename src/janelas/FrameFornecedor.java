@@ -373,14 +373,14 @@ public class FrameFornecedor extends javax.swing.JInternalFrame {
 
         
         if (textoRazaoFornecedor.getText().trim().isEmpty() || textoEmailFornecedor.getText().trim().isEmpty() || textoEnderecoFornecedor.getText().trim().isEmpty()
-                || textoNomeFornecedor.getText().trim().isEmpty() || textoCNPJFornecedor.getText().trim().isEmpty() || textoTelefoneFornecedor.getText().trim().isEmpty()) {
+                || textoNomeFornecedor.getText().trim().isEmpty() || CNPJ.trim().isEmpty() || Tel.trim().isEmpty()) {
             
             try {   
                     logs.escreverLog("Erro ao cadastrar Fornecedor!"); 
                 } catch (IOException ex) {
                     logs.exceptionLog(ex); 
                 } 
-            
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos corretamente!");
             throw new Exceptions("Preencha todos os campos corretamente!");
         }
 

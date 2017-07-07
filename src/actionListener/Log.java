@@ -18,7 +18,6 @@ import java.io.StringWriter;
 public class Log {
 
     private static String user;
-    private final Log logs = new Log();
     
     public void setUser(String user) {
         this.user = user;
@@ -59,7 +58,7 @@ public class Log {
         try {
             escreverLog(sw.toString());
         } catch (IOException ex) {
-            logs.exceptionLog(ex);
+            exceptionLog(ex);
         }
 
     }

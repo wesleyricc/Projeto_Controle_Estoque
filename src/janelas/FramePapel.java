@@ -8,10 +8,8 @@ import gets_sets.Login;
 import gets_sets.Papel;
 import java.awt.Dimension;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 public class FramePapel extends javax.swing.JInternalFrame {
@@ -24,6 +22,9 @@ public class FramePapel extends javax.swing.JInternalFrame {
     Log logs = new Log();
     Login l;
 
+    Vector itens = papelDAO.carregaComboBox();
+    
+
     public FramePapel() {
         super("Cadastro de Papéis");
         initComponents();
@@ -33,10 +34,7 @@ public class FramePapel extends javax.swing.JInternalFrame {
         botaoCancelar.addActionListener(papel);
         botaoLimpar.addActionListener(papel);
 
-        Vector itens = papelDAO.carregaComboBox();
-        DefaultComboBoxModel model = new DefaultComboBoxModel(itens);
-        textoFabricantePapel.setModel(model);
-        
+        setarFabricante(itens);
 
     }
 
@@ -243,6 +241,11 @@ public class FramePapel extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setarFabricante(Vector itens) {
+        DefaultComboBoxModel model = new DefaultComboBoxModel(itens);
+        textoFabricantePapel.setModel(model);
+    }
+
     private void textoEstoquePapelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoEstoquePapelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textoEstoquePapelActionPerformed
@@ -369,18 +372,18 @@ public class FramePapel extends javax.swing.JInternalFrame {
         return pap;
     }
 
-    public void editarPapel(Papel pap){
-        
+    public void editarPapel(Papel pap) {
+
         textoCodPapel.setText(pap.getTextoCodpapel());
-        textoEstoquePapel.setText(pap.getTextoEstoquepapel());     
+        textoEstoquePapel.setText(pap.getTextoEstoquepapel());
         textoVendaPapel.setText(pap.getTextoVendaPapel());
-        
+
         textoFabricantePapel.setSelectedIndex(0);
         textoTipoPapel.setSelectedIndex(0);
         textoFormatoPapel.setSelectedIndex(0);
         textoGramaturaPapel.setSelectedIndex(0);
     }
-    
+
     public void LimparPapel() {
         textoCodPapel.setText("");
         textoEstoquePapel.setText("");

@@ -36,6 +36,7 @@
                     <Property name="text" type="java.lang.String" value="Papel"/>
                   </Properties>
                   <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cadPapelMouseClicked"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadPapelActionPerformed"/>
                   </Events>
                 </MenuItem>
@@ -60,6 +61,7 @@
                 <Property name="text" type="java.lang.String" value="Consultar"/>
               </Properties>
               <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="menuConsultarMouseClicked"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuConsultarActionPerformed"/>
               </Events>
             </MenuItem>

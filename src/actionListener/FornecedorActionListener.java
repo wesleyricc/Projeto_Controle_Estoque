@@ -1,12 +1,15 @@
 package actionListener;
 
 import banco.FornecedorDAO;
+import banco.PapelDAO;
 import exception.Exceptions;
 import gets_sets.Fornecedor;
 import janelas.FrameFornecedor;
+import janelas.FramePapel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -14,13 +17,16 @@ import javax.swing.JOptionPane;
 public class FornecedorActionListener implements ActionListener {
 
     private final FrameFornecedor ffornecedor;
+    private final FramePapel fpapel = new FramePapel();
     private Fornecedor f;
     private final Log logs = new Log();
     FornecedorDAO fornDAO = new FornecedorDAO();
+    PapelDAO papelDAO = new PapelDAO();
     int cont = 0;
 
     public FornecedorActionListener(FrameFornecedor fornecedor) {
         this.ffornecedor = fornecedor;
+
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -52,6 +58,7 @@ public class FornecedorActionListener implements ActionListener {
                             return;
                         }
                         if (n == 1) {
+                            cont = 0;
                             return;
                         } else {
                             ffornecedor.LimparFornecedor();
@@ -64,10 +71,12 @@ public class FornecedorActionListener implements ActionListener {
                         cont = 0;
                         JOptionPane.showMessageDialog(null, "Fornecedor cadastrado com sucesso");
                         fornDAO.update(f);
+                        Vector itens = papelDAO.carregaComboBox();
+                    
+
                     }
 
-                }
-                else{
+                } else {
                     try {
                         logs.escreverLog("Salvou o cadastro de Fornecedores!");
                     } catch (IOException ex) {
@@ -76,6 +85,8 @@ public class FornecedorActionListener implements ActionListener {
                     }
                     JOptionPane.showMessageDialog(null, "Fornecedor cadastrado com sucesso");
                     fornDAO.insert(f);
+                 
+
                 }
             } catch (Exceptions ex) {
                 Logger.getLogger(FrameFornecedor.class.getName()).log(Level.SEVERE, null, ex);
@@ -83,9 +94,6 @@ public class FornecedorActionListener implements ActionListener {
             }
 
             String msg = "Cadastrou um fornecedor!";
-
-
-            
 
         }
 
@@ -110,16 +118,16 @@ public class FornecedorActionListener implements ActionListener {
             ffornecedor.LimparFornecedor();
             ffornecedor.dispose();
         }
-        
+
         if (e.getActionCommand().equals("Excluir")) {
 
             try {
                 logs.escreverLog("Excluiu o cadastro de Funcionário!");
-                } catch (IOException ex) {
-                    logs.exceptionLog(ex); 
-                }
-            
-            if(cont == 1){
+            } catch (IOException ex) {
+                logs.exceptionLog(ex);
+            }
+
+            if (cont == 1) {
                 cont = 0;
                 try {
                     fornDAO.delete(f);
@@ -128,14 +136,12 @@ public class FornecedorActionListener implements ActionListener {
                     Logger.getLogger(FornecedorActionListener.class.getName()).log(Level.SEVERE, null, ex);
                     logs.exceptionLog(ex);
                 }
-                
-            }else{
+
+            } else {
                 JOptionPane.showMessageDialog(null, "Fornecedor não cadastrado no banco de dados!");
             }
-                       
+
         }
-        
-        
 
     }
 }
